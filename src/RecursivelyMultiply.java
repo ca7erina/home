@@ -7,7 +7,7 @@ public class RecursivelyMultiply {
 
     public static void main(String args[]) {
 
-        int n= 22;
+        int n= 20;
         System.out.println(n + "!");
         System.out.println(multiply(n));
 System.out.println(multiplyrecursively(n));
