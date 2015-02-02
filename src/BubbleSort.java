@@ -1,7 +1,7 @@
 /**
  * BubbleSort O(n2)
  */
-public class BubblSort {
+public class BubbleSort {
 
     public static void main(String args[]) {
         int[] a = {3, 2, 1, 7, 4, 9, 5, 10};
