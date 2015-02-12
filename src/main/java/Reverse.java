@@ -1,3 +1,5 @@
+package main.java;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,6 +17,8 @@ public class Reverse {
         System.out.println(ReverseArray(str2));
         System.out.println(str2);
         System.out.println(StringBufferReverse(str2));
+        System.out.println(ReverseCharArray(str2));
+
 
     }
 
@@ -25,6 +29,9 @@ public class Reverse {
         return sb.toString();
     }
 
+    public static void reverseRecusively(String str) {
+    //TODO do reverse with Recursion
+    }
 
     public static String ReverseArray(String strstr) {
         String[] str = strstr.split("");
@@ -40,6 +47,19 @@ public class Reverse {
             result += s;
         }
         return result;
+
+    }
+
+    public static String ReverseCharArray(String strstr) {
+        char[] chars = strstr.toCharArray();
+        for(int i = 0; i < chars.length / 2; i++) {
+            char temp;
+            temp = chars[i];
+            chars[i] = chars[chars.length - 1 - i];
+            chars[chars.length - 1 - i] = temp;
+        }
+
+        return new String(chars);
 
     }
 
