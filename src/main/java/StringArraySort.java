@@ -1,4 +1,7 @@
+package main.java;
+
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * how to sort string in java
@@ -8,6 +11,7 @@ public class StringArraySort {
         String str="19827364517";
         System.out.println(str);
         System.out.println(arrayJavaSort(str));
+//        Collections.sort();
     }
 
     public static String arrayJavaSort(String str){
