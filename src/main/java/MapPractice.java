@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * Created by chenxiaoxue on 3/21/15.
+ *
  */
 public class MapPractice {
     public static void main(String[] args){

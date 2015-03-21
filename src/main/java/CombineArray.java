@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * Created by chenxiaoxue on 3/21/15 .
+ *
+ *
  */
 public class CombineArray {
     public static void main(String[] args) {
