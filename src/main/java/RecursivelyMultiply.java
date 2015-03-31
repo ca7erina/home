@@ -15,7 +15,6 @@ public class RecursivelyMultiply {
         System.out.println(multiplyBig(n));
     }
 
-
     public static long multiply(int n) {
         if(n == 0) {
             return 0;
