@@ -1,4 +1,4 @@
-package main.java.codility;
+package main.java.codility.time_complexity;
 
 /**
  * A small frog wants to get to the other side of the road. The frog is currently located at position X and wants to get to a position greater than or equal to Y. The small frog always jumps a fixed distance, D.
@@ -23,7 +23,7 @@ package main.java.codility;
  */
 public class FrogJump {
     public static void main(String args[]) {
-        solution(0,1000,10);
+        solution(0, 1000, 10);
 
     }
 //    int solution(int X, int Y, int D) {//Detected time complexity:O(Y-X)
