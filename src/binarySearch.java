@@ -1,0 +1,67 @@
+import java.util.Arrays;
+
+/**
+ * Created by chenxiaoxue on 10/19/15.
+ */
+public class binarySearch {
+
+    public static void main(String[] args){
+        int length = (int)(Math.random()*100);
+        int a[] = new int[length];
+        for(int i=0;i<length;i++){
+            a[i] = (int)(Math.random()*100);
+        }
+
+        Arrays.sort(a);
+
+        System.out.println(Arrays.toString(a));
+        System.out.println( "index:"+find(a,28));
+    }
+
+
+    public static int find(int[] myArray, int searchKey){
+        int lowerBound = 0;
+        int upperBound = myArray.length-1;
+        int check;
+        while(true){
+
+            check = (lowerBound + upperBound ) / 2;
+//            System.out.println("check:"+check);
+            if(myArray[check]==searchKey){
+                return check; // found it
+            }else if(lowerBound > upperBound){
+                System.out.println("check:"+check);
+                return -1; // can't find it
+            }else{ // divide range
+
+                if(myArray[check] < searchKey){
+                    lowerBound = check + 1; // it's in upper half
+                }else{
+                    upperBound = check - 1; // it's in lower half
+                }
+//                System.out.println("lowerBound:"+lowerBound);
+//                System.out.println("upperBound:"+upperBound);
+            } // end else divide range
+        } // end while
+    } // end find()
+
+
+
+    public boolean delete(int value){
+        int j=0;
+        while(array[j] != value&&j<nElems){
+            j++;
+        } // linear search
+        if(j==nElems){ // can't find it
+            return false;
+        }else{ // found it
+
+            for(int k=j; k<nElems-1; k++){ // move values down
+                array[k] = array[k+1];
+            }
+            nElems--; // decrement size
+            return true;
+        }
+    } // end delete()
+
+}
