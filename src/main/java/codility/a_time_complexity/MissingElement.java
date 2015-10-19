@@ -1,4 +1,4 @@
-package main.java.codility.time_complexity;
+package main.java.codility.a_time_complexity;
 
 
 /**

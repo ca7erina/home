@@ -1,4 +1,4 @@
-package main.java.codility.counting_elements;
+package main.java.codility.b_counting_elements;
 
 import java.util.Arrays;
 
