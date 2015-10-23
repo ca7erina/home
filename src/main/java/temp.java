@@ -5,7 +5,7 @@ package main.java;
  */
 public class temp {
     public static void main(String[] args){
-        System.out.println("sdfsdf");
+        System.out.println((-5)%3);
 
     }
 }

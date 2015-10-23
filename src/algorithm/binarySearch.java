@@ -1,3 +1,5 @@
+package algorithm;
+
 import java.util.Arrays;
 
 /**
@@ -47,21 +49,5 @@ public class binarySearch {
 
 
 
-    public boolean delete(int value){
-        int j=0;
-        while(array[j] != value&&j<nElems){
-            j++;
-        } // linear search
-        if(j==nElems){ // can't find it
-            return false;
-        }else{ // found it
-
-            for(int k=j; k<nElems-1; k++){ // move values down
-                array[k] = array[k+1];
-            }
-            nElems--; // decrement size
-            return true;
-        }
-    } // end delete()
 
 }
