@@ -1,31 +1,23 @@
-package test;
+package hackRank;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Created by chenxiaoxue on 5/10/15.
+ * input number: how many words
+ *
+ * input:
+ * 3
+ * banana
+ * orange
+ * apple
+ *
+ * output:
+ * 3
+ * apple banana orange
+ *
  */
-public class Temp {
 
-//    public static void main(String args[] ) throws Exception {
-//        Scanner scan = new Scanner(System.in);
-//        String s=scan.nextLine();
-//        s =s.replaceAll("[!,?.\\_'@]+", " ");
-//        s =s.replaceAll("[ ]+", " ");
-//        s= s.trim();
-//        if(s==null||s.equals("")||s.isEmpty()){
-//            System.out.println(0);
-//            return;
-//        }
-//        String words[] = s.split(" ");
-//        System.out.println(words.length);
-//        for(String w:words){
-//            System.out.println(w.trim());
-//        }
-//
-//    }
-
+public class SortWords {
     public static void main(String args[] ) throws Exception {
         Scanner myScanner = new Scanner(System.in);
         int length = myScanner.nextInt();
@@ -36,14 +28,10 @@ public class Temp {
         }
 
         //sort
-        String smallest = "";
         for(int i =0; i<words.length;i++){
-
             for(int j=i+1;j<words.length;j++){
-
                 if(compare(words[j],words[i])==-1){
                     swap(words,j,i);
-                    System.out.println(i+" "+j+" "+Arrays.toString(words));
                 }
             }
 
@@ -56,8 +44,6 @@ public class Temp {
 
     }
     public static int compare(String a, String b){
-        System.out.println("a :"+a);
-        System.out.println("b :"+b);
         int result=0;
         a = a.toLowerCase();
         b = b.toLowerCase();
@@ -108,5 +94,4 @@ public class Temp {
         str[a]=str[b];
         str[b] = temp;
     }
-
 }
