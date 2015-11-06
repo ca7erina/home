@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef3e6a1b-bafe-425e-a286-c075f2d4d880" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/hackRank/Array1D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Array1DInput.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Array1DInputResult.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/home/test/Temp.class" afterPath="$PROJECT_DIR$/out/production/home/test/Temp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/InsertionSort.java" afterPath="$PROJECT_DIR$/src/main/java/InsertionSort.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/SelectSort.java" afterPath="$PROJECT_DIR$/src/main/java/SelectSort.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/Temp.java" afterPath="$PROJECT_DIR$/src/test/Temp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BubbleSort.java" afterPath="$PROJECT_DIR$/src/main/java/BubbleSort.java" />
     </list>
     <ignored path="home.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -92,8 +85,8 @@
       <file leaf-file-name="BubbleSort.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/BubbleSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="540">
-              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+              <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -102,7 +95,7 @@
       <file leaf-file-name="SelectSort.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/SelectSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="555">
+            <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="555">
               <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
               <folding />
             </state>
@@ -112,8 +105,8 @@
       <file leaf-file-name="InsertionSort.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/InsertionSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24691358" vertical-offset="0" max-vertical-offset="525">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.8695652" vertical-offset="0" max-vertical-offset="525">
+              <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -170,7 +163,6 @@
         <option value="$PROJECT_DIR$/src/binarySearch.java" />
         <option value="$PROJECT_DIR$/src/main/java/temp.java" />
         <option value="$PROJECT_DIR$/src/algorithm/NearestPrime.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BubbleSort.java" />
         <option value="$PROJECT_DIR$/src/hackRank/SortWords.java" />
         <option value="$PROJECT_DIR$/src/test/Temp.java" />
         <option value="$PROJECT_DIR$/Array1DInput.txt" />
@@ -178,6 +170,7 @@
         <option value="$PROJECT_DIR$/src/hackRank/Array1D.java" />
         <option value="$PROJECT_DIR$/src/main/java/InsertionSort.java" />
         <option value="$PROJECT_DIR$/src/main/java/SelectSort.java" />
+        <option value="$PROJECT_DIR$/src/main/java/BubbleSort.java" />
       </list>
     </option>
   </component>
@@ -186,9 +179,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="344" />
-    <option name="y" value="44" />
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="810" />
+    <option name="height" value="807" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -370,7 +363,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="FullScreen" value="false" />
   </component>
-  <component name="RunManager" selected="Application.SelectSort">
+  <component name="RunManager" selected="Application.BubbleSort">
     <configuration default="false" name="Temp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -794,11 +787,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.SelectSort" />
-        <item index="1" class="java.lang.String" itemvalue="Application.InsertionSort" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Array1D" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Temp" />
-        <item index="4" class="java.lang.String" itemvalue="Application.BubbleSort" />
+        <item index="0" class="java.lang.String" itemvalue="Application.BubbleSort" />
+        <item index="1" class="java.lang.String" itemvalue="Application.SelectSort" />
+        <item index="2" class="java.lang.String" itemvalue="Application.InsertionSort" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Array1D" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Temp" />
       </list>
     </recent_temporary>
   </component>
@@ -843,7 +836,7 @@
       <workItem from="1445629689492" duration="171000" />
       <workItem from="1446254281847" duration="2255000" />
       <workItem from="1446586430084" duration="2158000" />
-      <workItem from="1446670028000" duration="7986000" />
+      <workItem from="1446670028000" duration="8761000" />
     </task>
     <task id="LOCAL-00001" summary="add bubblesort and loop">
       <created>1422201185382</created>
@@ -915,10 +908,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96229000" />
+    <option name="totallyTimeSpent" value="97004000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="344" y="44" width="1440" height="810" extended-state="0" />
+    <frame x="344" y="23" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -942,7 +935,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2167382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28412256" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28531468" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1299,14 +1292,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hackRank/SortWords.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="1530">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/temp/temp.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
@@ -1372,10 +1357,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/hackRank/SortWords.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="1530">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/BubbleSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="540">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1390,8 +1383,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/InsertionSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24691358" vertical-offset="0" max-vertical-offset="525">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.8695652" vertical-offset="0" max-vertical-offset="525">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
           <folding />
         </state>
       </provider>
