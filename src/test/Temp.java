@@ -27,86 +27,22 @@ public class Temp {
 //    }
 
     public static void main(String args[] ) throws Exception {
-        Scanner myScanner = new Scanner(System.in);
-        int length = myScanner.nextInt();
-        String words[] = new String[length];
-        myScanner.nextLine();
-        for(int i=0; i<words.length;i++){
-            words[i] = myScanner.nextLine().trim();
-        }
 
-        //sort
-        String smallest = "";
-        for(int i =0; i<words.length;i++){
-
-            for(int j=i+1;j<words.length;j++){
-
-                if(compare(words[j],words[i])==-1){
-                    swap(words,j,i);
-                    System.out.println(i+" "+j+" "+Arrays.toString(words));
-                }
+        for(int i=0; i<10;i++){
+            System.out.println(i);
+            if(i==2){
+                i=i+2;
+                continue;
             }
 
         }
 
 
-        for(int i =0; i<words.length;i++){
-            System.out.print(words[i]+" ");
-        }
+
+
+
 
     }
-    public static int compare(String a, String b){
-        System.out.println("a :"+a);
-        System.out.println("b :"+b);
-        int result=0;
-        a = a.toLowerCase();
-        b = b.toLowerCase();
-        if(a.length()<b.length()){
-            for(int i =0; i<a.length();i++){
-                if(a.charAt(i)==b.charAt(i)){
-                    continue; //a==b
-                }
-                if(a.charAt(i)>b.charAt(i)){
-                    return 1; //a>b
-                }else{
-                    return -1;//a<b
-                }
-            }
-            return -1;//a<b
-        }else if(a.length()==b.length()){
-            for(int i =0; i<b.length();i++){
-                if(a.charAt(i)==b.charAt(i)){
-                    continue; //a==b
-                }
-                if(a.charAt(i)>b.charAt(i)){
-                    return 1; //a>b
-                }else{
-                    return -1;//a<b
-                }
-            }
-            return 0;
-        }else if(a.length()>b.length()){
-            for(int i =0; i<b.length();i++){
-                if(a.charAt(i)==b.charAt(i)){
-                    continue; //a==b
-                }
-                if(a.charAt(i)>b.charAt(i)){
-                    return 1; //a>b
-                }else{
-                    return -1;//a<b
-                }
-            }
-            return 1;//a>b;
-        }
 
-        return result;
-    }
-
-    public static void swap(String str[], int a, int b){
-        String temp ="";
-        temp = str[a];
-        str[a]=str[b];
-        str[b] = temp;
-    }
 
 }

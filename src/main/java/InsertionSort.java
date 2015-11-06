@@ -14,21 +14,16 @@ public class InsertionSort {
 
     }
 
-    public static void insertionsort(int[] a) {
-        for (int i = 1; i < a.length; i++) {
-            int j;
-            for (j = i; j>0; j--) {
-                if (a[j] < a[j-1]) {
-                    int temp;
-                    temp = a[j];
-                    a[j] = a[j-1];
-                    a[j-1] = temp;
-                }
-
+    public static void insertionsort(int[] array) {
+        for (int outer = 1; outer < array.length; outer++) {
+            int temp=array[outer];
+            int inner = outer;
+            while(inner>0&& array[inner -1]>=temp){
+                array[inner]=array[inner-1];
+                inner--;
             }
-
+            array[inner]=temp;
         }
-
     }
 
 }

@@ -13,16 +13,19 @@ public class SelectSort {
     }
 
     public static void selectsort(int[] a) {
-        for(int i = 0; i < a.length - 1; i++) {
-            // int smallest=a[i];
+        int min;
+        for(int i = 0; i < a.length; i++) {
+            min=i;
             for(int j = i + 1; j < a.length; j++) {
-                if(a[j] < a[i]) {
-                    int temp;
-                    temp = a[i];
-                    a[i] = a[j];
-                    a[j] = temp;
+                if(a[j] < a[min]) {
+                    min=j;
                 }
             }
+            //swap
+            int temp;
+            temp = a[i];
+            a[i] = a[min];
+            a[min] = temp;
         }
     }
 }
