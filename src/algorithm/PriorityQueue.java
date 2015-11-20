@@ -1,98 +1,126 @@
 package algorithm;
 
-/**
- * Created by chenxiaoxue on 11/16/15.
- * A priority queue is a queue where items don’t just join
- * at the rear, they are slotted into the queue according to
- * their priority
- */
+import java.util.Arrays;
+
 public class PriorityQueue {
+	
+	 private int maxSize;
+	    private long[] queArray;
+	    private int front;
+	    private int nItems;
 
-    private int maxSize;
-    private long[] queArray;
-    private int front;
-//    private int rear;
-    private int nItems;
+	    public PriorityQueue(int size){
+	        maxSize = size;
+	        queArray = new long[maxSize];
+	        front =0;
+	        nItems =0;
+	    }
+
+	    public boolean insert(long item){
+	        if(isFull()) return false;
+	        if(nItems==0){
+	        	queArray[front]=item;
+	        }if(nItems+front>=maxSize&&item>queArray[nItems+front-1]){ //array is full,but removed at the begainning, 0,0,60, 80 and then insert 90
+	        	int j = front;
+	        	while(j<=(nItems+front-1)){
+	        		queArray[j-1]=queArray[j];
+	        		j++;
+	        	}
+	        	front--;
+	        	queArray[j-1]=item;
+	        	
+	        }else{
+	        	int j=nItems;
+	        	while(j>0&&queArray[j-1]>item){
+	        		queArray[j]=queArray[j-1];
+	        		j--;
+	        	}
+	        	queArray[j]=item;
+	        }
+	       
+	        nItems++;
+	        return true;
+	    }
+
+	    public long remove(){
+	        if(isEmpty()){
+	            return Long.parseLong(null);
+	        }
+	        long temp = queArray[front];
+	        front++;
+	        if(front ==maxSize){
+	            front =0;
+	        }
+	        nItems--;
+	        return temp;
+	    }
+
+		//every time remove an front element, all element move forward by one position; front always ==0;
+//		public long remove(){
+//			if(isEmpty()){
+//	            return Long.parseLong(null);
+//	        }
+//			long temp = queArray[0];
+//
+//			int j = 0;
+//			while(j<nItems-1){
+//				queArray[j]=queArray[j+1];
+//				j++;
+//			}
+//			queArray[j]=0;
+//			nItems--;
+//			return temp;
+//		}
 
 
-    public PriorityQueue(int size){
-        maxSize = size;
-        queArray = new long[maxSize];
-        front =0;
-//        rear=-1;
-        nItems =0;
-    }
-
-    public boolean insert(long item){
-        if(isFull()) return false;
-
-        if (nItems==0){
-            queArray[0]=item;
-
-        }else {
-            int i=nItems-1; //lastItem index
-            while(i>=0&&queArray[i]>item){
-                queArray[i+1]=queArray[i];
-                i--;
-            } //i is the index of the item <= item
-            queArray[i+1] = item;
-        }
-
-        nItems++;
-        return true;
 
 
+	    public long peekFront(){
+	        return queArray[front];
+	    }
 
-    }
+	    public boolean isFull(){
+	        return nItems==maxSize;
+	    }
 
-    public long remove(){
-        if(isEmpty()){
-            return Long.parseLong(null);
-        }
-        long temp = queArray[front];
-        front++;
-        if(front ==maxSize){
-            front =0;
-        }
-        nItems--;
-        return temp;
-    }
+	    public boolean isEmpty(){
+	        return nItems==0;
+	    }
+	    public int size(){
+	        return nItems;
+	    }
+	
+	    public void print(){
+	       System.out.println(Arrays.toString(queArray));
+	    }
+	
+	
 
-
-    public boolean isFull(){
-        return nItems==maxSize;
-    }
-
-    public boolean isEmpty(){
-        return nItems==0;
-    }
-
-    public int size(){
-        return nItems;
-    }
-
-
+	
 }
 
-class TestPQ{
+class PriorityQueueTest{
+	public static void main(String[] args) {
+		
+		PriorityQueue pq = new PriorityQueue(4);
+		pq.insert(60);
+		pq.insert(20);
+		pq.insert(80);
+		pq.insert(40);
+		pq.print();//20,40,60,80
+		
+	    pq.remove();
+		pq.print();
+	    pq.remove();
+		pq.print();
 
-    public static void main(String args[]){
-        int length = 10;
-        PriorityQueue pq = new PriorityQueue(length);
-
-        for(int i=0;i<length;i++){
-            int random = (int)(Math.random()*100);
-
-            pq.insert(random);
-            System.out.println("insert:"+random);
-        }
-
-        while(!pq.isEmpty()){
-            System.out.println("remove:"+pq.remove());
-
-        }
-
-
-    }
+	    pq.insert(90);
+	    pq.print();
+	    while(!pq.isEmpty()){
+	    	System.out.println(pq.remove());
+	    }
+	    
+	    pq.print();
+	}
 
 }
