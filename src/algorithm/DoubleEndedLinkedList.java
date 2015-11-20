@@ -75,6 +75,7 @@ public class DoubleEndedLinkedList {
             current.displayLink();
             current = current.next;
         }
+        System.out.println();
 
     }
 
@@ -89,11 +90,14 @@ class DoubleEndedLinkedListTest{
         ll.insertHead(3);
         ll.insertHead(1);
         ll.insertHead(4);
+        ll.display();
         ll.deleteFirst();
+        ll.display();
         ll.insertLast(6);
+        ll.display();
         ll.deleteLast();
+        ll.display();
         ll.insertLast(5);
-
         ll.display();
     }
 }

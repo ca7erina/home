@@ -52,7 +52,7 @@ public class LinkedList {
             current.displayLink();
             current = current.next;
         }
-
+        System.out.println();
     }
 
 
@@ -65,7 +65,7 @@ class Link{
         this.data = data;// "next" is automatically set to null;
     }
     public void displayLink(){
-        System.out.print(this.data+" ");
+        System.out.print(this.data + " ");
     }
 
 }
