@@ -60,6 +60,7 @@ public class LinkedList {
 class Link{
     public int data;
     public Link next;
+    public Link previous;
 
     public Link(int data){
         this.data = data;// "next" is automatically set to null;
