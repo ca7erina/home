@@ -26,15 +26,12 @@ public class DoubleEndedLinkedList {
     }
 
     public void insertLast(int number){
-       Link newLink = new Link(number);
+      Link newLink = new Link(number);
 		if (isEmpty()) {
 			first = newLink;
 		} else {
-			Link current = first;
-			while (current.next != null) {
-				current = current.next;
-			}
-			current.next = newLink;
+			
+			last.next = newLink;
 		}
 		last = newLink;
     }
