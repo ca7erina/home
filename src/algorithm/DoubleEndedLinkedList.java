@@ -16,18 +16,27 @@ public class DoubleEndedLinkedList {
 
     public void insertHead(int number){
         Link newLink = new Link(number);
-        newLink.next=first;
-        first = newLink;
+		if (isEmpty()) {
+			first = newLink;
+			last = newLink;
+		} else {
+			newLink.next = first;
+			first = newLink;
+		}
     }
 
     public void insertLast(int number){
-        Link newLink = new Link(number);
-        Link current = first;
-        while(current.next!=null){
-            current = current.next;
-        }
-        current.next=newLink;
-        last = newLink;
+       Link newLink = new Link(number);
+		if (isEmpty()) {
+			first = newLink;
+		} else {
+			Link current = first;
+			while (current.next != null) {
+				current = current.next;
+			}
+			current.next = newLink;
+		}
+		last = newLink;
     }
 
     public Link deleteFirst(){
