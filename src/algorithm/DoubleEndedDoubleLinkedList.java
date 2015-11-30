@@ -8,7 +8,7 @@ public class DoubleEndedDoubleLinkedList {
    	private Link first;
 	private Link last;
 
-	public DoubledEndedDoublyLinkedList() {
+	public DoubleEndedDoubleLinkedList() {
 		first = null;
 		last = null;
 	}
@@ -103,7 +103,7 @@ class DoubleEndedDoubledLinkedListTest {
 
 	public static void main(String[] args) {
 
-		DoubledEndedDoublyLinkedList ll = new DoubledEndedDoublyLinkedList();
+        DoubleEndedDoubleLinkedList ll = new DoubleEndedDoubleLinkedList();
 		ll.insertHead(1);
 		ll.insertHead(3);
 		ll.insertHead(5); //5 3 1
