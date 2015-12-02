@@ -5,8 +5,8 @@ package algorithm.recursion;
  */
 public class Tutorial {
 
-    public static void main(){
-
+    public static void main(String args[]){
+       System.out.println(modulus(5, 3));//5%3
     }
 
     /**
@@ -28,6 +28,18 @@ public class Tutorial {
         return n+triangularNumbers(n-1);
 
     }
+
+    public static int modulus(int val,int d){
+        if(val<d){
+            return val;
+        }else{
+            return modulus(val-d,d);
+        }
+
+
+    }
+
+
 
 
 }

@@ -24,7 +24,7 @@ public class Anagrams {
                 String target = words.substring(i,i+1);
                 String after = words.substring(i+1,words.length());
                 String before = words.substring(0, i);
-//                System.out.println("prefix:"+prefix+" target:"+target+" before:"+before+" after:"+after);
+                System.out.println("i:"+i+" prefix:"+prefix+" target:"+target+" before:"+before+" after:"+after+" words:"+words);
 
                 printAnagrams(prefix + target, before + after);
 
