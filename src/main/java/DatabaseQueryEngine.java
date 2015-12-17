@@ -7,7 +7,10 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.UUID;
-
+/**
+ *  need file postgresqljdbc4.jar at the same directory or not
+ * 
+ * 
 /*----------------------------------------------------------------
  *
  *  Compilation:   javac DatabaseQueryEngine.java
