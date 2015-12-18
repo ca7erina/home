@@ -103,6 +103,20 @@ public class BitwiseOperator {
 		result = -116>>>3;
 		System.out.println("-116>>>3 :"+result);
 		
+		
+		/**
+		 * Bitwise complement (~)
+		 * 
+		 *   00000000 00000000 00000000 01110100
+		 * ~ 
+		 * -------------------------------------------
+		 *   11111111 11111111 11111111 10001011  
+		 * 
+		 */
+		
+		result = ~116;
+		System.out.println("~116 :"+result);
+		
 	}
 
 }
