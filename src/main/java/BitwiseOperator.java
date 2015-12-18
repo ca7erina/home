@@ -117,6 +117,23 @@ public class BitwiseOperator {
 		result = ~116;
 		System.out.println("~116 :"+result);
 		
+		
+		/**
+		 * addtion
+		 */
+		result = addition(12,23);
+		System.out.println("addition(12,23):"+result);
+	}
+	
+	
+	public static int addition (int a , int b){
+		if (b==0){
+			return a;
+		}
+		
+		int sum = a^b;
+		int carry = (a&b)<<1;
+		return addition(sum, carry);
 	}
 
 }
