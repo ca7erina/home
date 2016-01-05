@@ -55,7 +55,16 @@ public class LinkedList {
         System.out.println();
     }
 
-
+    //test
+    public Link get3rdLast() {
+        Link current = first;
+        while (current.next!=null&&current.next.next!=null){
+            if(current.next.next.next==null){
+                return current;
+            }
+        }
+        return null;
+    }
 }
 class Link{
     public int data;
@@ -83,5 +92,10 @@ class LinkedListTest{
         ll.deleteHead();
        ll.insertHead(7);
         ll.display();
+        ll.deleteHead();
+        System.out.println(ll.get3rdLast().data);
+
+
+
     }
 }

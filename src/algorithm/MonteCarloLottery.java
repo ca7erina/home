@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class MonteCarloLottery {
 
     public static void main(String[] args) {
-        int randomSize = 1000000000; // Monte Carlo simulation: large random size to make the result closer to accurate
+        int randomSize = 1000000000; // repeated random sample
         int consecutivePairs = 0;
         int[] tickets;
         for(int i = 0; i < randomSize; i++) {

@@ -85,8 +85,6 @@ public class DoubleEndedLinkedList {
 
     }
 
-
-
 }
 class DoubleEndedLinkedListTest{
 
