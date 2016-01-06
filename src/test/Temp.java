@@ -27,22 +27,18 @@ public class Temp {
 //    }
 
     public static void main(String args[] ) throws Exception {
-
-        for(int i=0; i<10;i++){
-            System.out.println(i);
-            if(i==2){
-                i=i+2;
-                continue;
-            }
-
-        }
-
-
-
+        System.out.println(2%3); //=0...2
+        System.out.println(1%7);//=0...1
+        System.out.println(7%1);//=7..0
 
 
 
     }
 
-
+    public static int method(int number){
+        if (number == 3){
+            return 3;
+        }
+        return method((number % 4) + 1) + 2;
+    }
 }

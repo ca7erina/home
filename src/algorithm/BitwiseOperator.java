@@ -1,4 +1,4 @@
-package bits;
+package algorithm;
 
 public class BitwiseOperator {
 

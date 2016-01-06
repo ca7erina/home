@@ -39,7 +39,13 @@ public class Tutorial {
 
     }
 
-
-
+    public static double factorial(int n) {
+        if(n<=1){
+            return 1.0;
+        }
+        int x=n-1;
+        double value =1.0/n;// double yunsuan get double result. (1/n) doesn't work, result is 0
+        return (factorial(x)/value);
+    }
 
 }

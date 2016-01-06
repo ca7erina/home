@@ -15,10 +15,10 @@ public class Sort {
 		
 		
 		// bubble sort
-		for (int i = a.length - 1; i > 0; i--) {
-			for (int j = 0; j < i; j++) {
-				if (a[j] > a[j + 1]) {
-					swap(a, j, j + 1);
+		for (int outter = a.length - 1; outter > 0; outter--) {
+			for (int inner = 0; inner < outter; inner++) {
+				if (a[inner] > a[inner+ 1]) {
+					swap(a, inner, inner + 1);
 				}
 			}
 		}
@@ -27,23 +27,24 @@ public class Sort {
 		
 		initalArray(a);
 		
-		//select sort;
+		//select sort; find the min index in the nested loop and then swap in the outter loop , efficiency better than bubble sort;
 		int min;
 		for(int i=0;i<a.length;i++){
 			min=i;
-			for(int j=i+1;j<a.length-1;j++){
+			for(int j=i+1;j<a.length;j++){
 				if(a[j]<a[min]){
 					min =j;
 				}
-				
+
 			}
 			swap(a,i,min);
 		}
+
 		System.out.println("after select sort:" + Arrays.toString(a));
 		
 		initalArray(a);
 		//insert sort;
-		for(int i=1;i<a.length-1;i++){
+		for(int i=1;i<a.length;i++){
 			int temp = a[i];
 			int j=i;
 			while(j>0&&a[j-1]>temp){

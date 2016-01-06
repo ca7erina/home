@@ -1,3 +1,5 @@
+package hackRank;
+
 import java.util.Scanner;
 
 /**

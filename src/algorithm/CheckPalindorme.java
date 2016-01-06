@@ -21,4 +21,17 @@ public class CheckPalindorme {
 
 
     }
+
+    public static String check(String mystring){
+        if(mystring.length()<2){
+            return "TRUE";
+        }
+
+        if(mystring.charAt(0)!=mystring.charAt(mystring.length()-1)){
+            return "FALSE";
+        }
+        String substring = mystring.substring(1,mystring.length()-1);
+        return(check(substring));
+    }
+
 }

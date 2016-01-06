@@ -14,6 +14,7 @@ public class binarySearch {
             a[i] = (int)(Math.random()*100);
         }
 
+
         Arrays.sort(a);
 
         System.out.println(Arrays.toString(a));
@@ -28,11 +29,11 @@ public class binarySearch {
         while(true){
 
             check = (lowerBound + upperBound ) / 2;
-//            System.out.println("check:"+check);
+
             if(myArray[check]==searchKey){
                 return check; // found it
             }else if(lowerBound > upperBound){
-                System.out.println("check:"+check);
+
                 return -1; // can't find it
             }else{ // divide range
 

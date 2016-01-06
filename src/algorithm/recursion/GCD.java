@@ -1,9 +1,10 @@
+package algorithm.recursion;
 public class GCD {
   public static void main(String[] args) {
   		
   }
   
-  public static void gcd(int a,int b){
+  public static int gcd(int a,int b){
     if(a==0||b==0){
         return a+b;
     }
