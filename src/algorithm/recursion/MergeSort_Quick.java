@@ -1,11 +1,22 @@
 package algorithm.recursion;
 
+import java.util.Arrays;
+
 /**
+ *
+ * from harcker rank given code same as ppt;
  * Created by chenxiaoxue on 12/2/15.
  */
-public class MergeSort {
+public class MergeSort_Quick {
     static int array[]={2,5,2,6,3,8,9,3};
     static int workSpace[];
+
+    public static void main(String[] args) {
+        workSpace = new int[array.length];
+        mergeSort(0,array.length-1);
+        System.out.println(Arrays.toString(array));
+    }
+
 
     public static void mergeSort(int left, int right){
         int mid = (left + right) /2; // computes midpoint
@@ -29,5 +40,12 @@ public class MergeSort {
             }
         }
     }
+
+
+
+
+
+
+
 
 }

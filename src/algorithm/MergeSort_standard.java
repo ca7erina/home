@@ -3,9 +3,11 @@ package algorithm;
 import java.util.Arrays;
 
 /**
+ * from ppt
+ * put work space as the member variable is quicker;
  * Created by chenxiaoxue on 12/7/15.
  */
-public class MergeSort {
+public class MergeSort_standard {
 
     public static void main(String[] args) {
     int a[] = {1,10,9,2,3,88,34,44,66,5};

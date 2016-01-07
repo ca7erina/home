@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.bitwiseOperate;
 
 public class BitwiseOperator {
 
@@ -123,9 +123,18 @@ public class BitwiseOperator {
 		 */
 		result = addition(12,23);
 		System.out.println("addition(12,23):"+result);
+
+
+		/**
+		 * example
+		 * ~4 << ((5 & 3) | 1)
+		 */
+
+		System.out.println("~4 << ((5 & 3) | 1) = "+(~4 << ((5 & 3) | 1)));
+
 	}
 	
-	
+	//addition without +
 	public static int addition (int a , int b){
 		if (b==0){
 			return a;

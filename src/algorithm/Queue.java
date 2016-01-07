@@ -18,25 +18,25 @@ public class Queue {
         nItems =0;
     }
 
-    // simple insert
-//    public boolean insert(long j){
-//        if(isFull()) return false;
-//        rear++;
-//        queArray[rear] = j;
-//        nItems++;
-//        return true;
-//    }
 
     public boolean insert(long j){
         if(isFull()) return false;
-        if (rear == maxSize-1){
-            rear = -1;
-        }
         rear++;
         queArray[rear] = j;
         nItems++;
         return true;
     }
+
+//    public boolean insert(long j){
+//        if(isFull()) return false;
+//        if (rear == maxSize-1){ // deal with wraparound
+//            rear = -1;
+//        }
+//        rear++;
+//        queArray[rear] = j;
+//        nItems++;
+//        return true;
+//    }
 
     public long remove(){
         if(isEmpty()){

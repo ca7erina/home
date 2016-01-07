@@ -1,4 +1,4 @@
-package hackRank;
+package algorithm.bitwiseOperate;
 
 import java.util.Scanner;
 
