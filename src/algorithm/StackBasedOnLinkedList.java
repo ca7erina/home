@@ -1,5 +1,7 @@
 package algorithm;
 
+import algorithm.linkedList.LinkedList;
+
 /**
  * Created by chenxiaoxue on 1/7/16.
  */

@@ -73,20 +73,6 @@ public class CheckLinkedList {
             return "empty";
         }
 
-        //   Link slow= mylist.first;
-        //  Link fast = mylist.first;
-
-        //      while((slow.next!=null)&&(fast.next.next!=null)){
-        //         slow = slow.next;
-        //         fast = fast.next.next;
-        //         if(slow == fast){
-        //             return "FALSE";
-        //         }
-        //     }
-        // }
-
-
-
 
         Link forwards = mylist.first;
         int i =0;
@@ -117,6 +103,45 @@ public class CheckLinkedList {
 
     }
 
+
+
+//    public static String check(LinkedList mylist){
+//        if(mylist.isEmpty()){
+//            return("empty");
+//        }
+//        Link[] checklist = new Link[100];
+//        Link forwards = mylist.first;
+//        int counter1=0;
+//        while(forwards.next!=null){
+//            checklist[counter1]=forwards;
+//            forwards=forwards.next;
+//            for(int i=0;i<counter1;i++){
+//                if(forwards==checklist[i]){
+//                    return("FALSE");
+//                }
+//            }
+//            counter1++;
+//        }
+//        Link[] checklist2 = new Link[100];
+//        int counter2=0;
+//        Link backwards = mylist.last;
+//        while(backwards.previous!=null){
+//            checklist2[counter2]=backwards;
+//            backwards=backwards.previous;
+//            for(int i=0;i<counter2;i++){
+//                if(backwards==checklist2[i]){
+//                    return("FALSE");
+//                }
+//            }
+//            counter2++;
+//        }
+//        if(backwards==mylist.first&&forwards==mylist.last&&(counter1==counter2)){
+//            return("TRUE");
+//        }else{
+//            return("FALSE");
+//        }
+//    }
+//}
 
 }
 

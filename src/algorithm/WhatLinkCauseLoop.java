@@ -121,6 +121,27 @@
 //        }
 //        return("OK");
 //    }
+//
+//
+////    public static String hasloop(LinkedList mylist){
+////        Link slow= mylist.first;
+////        Link fast = mylist.first;
+////        if(mylist.first!=null){
+////            while((slow.next!=null)&&(fast.next!=null)&&(fast.next.next!=null)){
+////                slow = slow.next;
+////                fast = fast.next.next;
+////                if(slow == fast){
+////                    return "TRUE";
+////                }
+////
+////            }
+////        }else{
+////            return "FALSE";
+////        }
+////
+////        return "FALSE";
+////    }
+//
 //}
 //
 //
