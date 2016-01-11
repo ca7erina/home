@@ -10,7 +10,6 @@ public class Stack {
     private long[] stackArray;
     private int top;
 
-
     public Stack(int size){
         maxSize = size;
         stackArray = new long[size];
@@ -41,7 +40,6 @@ public class Stack {
     public void makeEmpty(){
         top = -1;
     }
-
 
 }
 

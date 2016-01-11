@@ -1,7 +1,8 @@
 package hackRank;
 
+import algorithm.Stack;
+
 import java.util.Scanner;
-import java.util.Stack;
 
 /**
  * Created by chenxiaoxue on 11/9/15.
@@ -10,11 +11,10 @@ public class Palindrome {
     public static void main(String args[] )  {
         Scanner myScanner = new Scanner(System.in);
         char words[] = myScanner.nextLine().replaceAll("\\s+","").toCharArray();
-        Stack<Character> p = new Stack<Character>() ;
+        Stack p = new Stack(words.length) ;
         for(int i=0;i<words.length;i++){
             p.push(words[i]);
         }
-
         int i=0;
         while(!p.isEmpty()){
             if( p.pop()!=words[i]){
@@ -24,7 +24,6 @@ public class Palindrome {
             i++;
         }
         System.out.println("TRUE");
-
     }
 
 

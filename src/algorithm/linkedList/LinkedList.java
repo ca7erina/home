@@ -36,7 +36,6 @@ public class LinkedList {
     public Link delete(int number){
         Link current  = first;
         Link previous  = first;
-
         while(current.data!=number){
             if(current.next==null){
                 return null;// didn't find it
@@ -51,7 +50,6 @@ public class LinkedList {
         }else{
             previous.next = current.next;
         }
-
         return current;
     }
 

@@ -46,8 +46,12 @@ public class DoubleEndedDoubleLinkedList {
 
 	public Link deleteFirst() {
 		Link temp = first;
-		first = first.next;
-		first.previous = null;
+		if(first.next!=null){
+			first = first.next;
+			first.previous = null;
+		}else{
+			first = null;//last element : first.next= =null
+		}
 		return temp;
 	}
 

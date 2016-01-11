@@ -27,26 +27,20 @@ public class binarySearch {
         int upperBound = myArray.length-1;
         int check;
         while(true){
-
             check = (lowerBound + upperBound ) / 2;
-
             if(myArray[check]==searchKey){
                 return check; // found it
             }else if(lowerBound > upperBound){
-
                 return -1; // can't find it
             }else{ // divide range
-
                 if(myArray[check] < searchKey){
                     lowerBound = check + 1; // it's in upper half
                 }else{
                     upperBound = check - 1; // it's in lower half
                 }
-//                System.out.println("lowerBound:"+lowerBound);
-//                System.out.println("upperBound:"+upperBound);
-            } // end else divide range
-        } // end while
-    } // end find()
+            }
+        }
+    }
 
 
 

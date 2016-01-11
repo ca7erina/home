@@ -17,8 +17,6 @@ public class Queue {
         rear=-1;
         nItems =0;
     }
-
-
     public boolean insert(long j){
         if(isFull()) return false;
         rear++;
@@ -50,15 +48,12 @@ public class Queue {
         nItems--;
         return temp;
     }
-
     public long peekFront(){
         return queArray[front];
     }
-
     public boolean isFull(){
         return nItems==maxSize;
     }
-
     public boolean isEmpty(){
         return nItems==0;
     }
