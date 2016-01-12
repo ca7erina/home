@@ -15,15 +15,16 @@ public class BinarySearch {
 
         int middle;
         middle = (lowerBound + upperBound) / 2;
-        if(a[middle] == searchKey)
+        if(a[middle] == searchKey) {
             return middle; // found it
-        else if(lowerBound > upperBound)
+        }else if(lowerBound > upperBound) {
             return -1; // can't find it
-        else { // divide range
-            if(a[middle] < searchKey) // it's in upper half
+        }else { // divide range
+            if(a[middle] < searchKey) { // it's in upper half
                 return recFind(searchKey, middle + 1, upperBound);
-            else // it's in lower half
+            }else { // it's in lower half
                 return recFind(searchKey, lowerBound, middle - 1);
+            }
         } // end else divide range
 
     } // end recFind()
