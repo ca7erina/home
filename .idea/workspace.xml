@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef3e6a1b-bafe-425e-a286-c075f2d4d880" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/home/algorithm/AlgorithmBasic.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/home/hackRank/Palindrome.class" afterPath="$PROJECT_DIR$/out/production/home/hackRank/Palindrome.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/home/algorithm/Queue.class" afterPath="$PROJECT_DIR$/out/production/home/algorithm/Queue.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/home/algorithm/QueueTest.class" afterPath="$PROJECT_DIR$/out/production/home/algorithm/QueueTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/home/algorithm/Sort.class" afterPath="$PROJECT_DIR$/out/production/home/algorithm/Sort.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/home/algorithm/Stack.class" afterPath="$PROJECT_DIR$/out/production/home/algorithm/Stack.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/home/algorithm/StackTest.class" afterPath="$PROJECT_DIR$/out/production/home/algorithm/StackTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/home/test/Temp.class" afterPath="$PROJECT_DIR$/out/production/home/test/Temp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/home/algorithm/binarySearch.class" afterPath="$PROJECT_DIR$/out/production/home/algorithm/binarySearch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/src/ExamPaperCollect.java" afterPath="$PROJECT_DIR$/temp/src/ExamPaperCollect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/Temp.java" afterPath="$PROJECT_DIR$/src/test/Temp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/src/Temp3.java" afterPath="$PROJECT_DIR$/temp/src/Temp3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/src/Temp4.java" afterPath="$PROJECT_DIR$/temp/src/Temp4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examcs335.txt" afterPath="$PROJECT_DIR$/examcs335.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exams.txt" afterPath="$PROJECT_DIR$/exams.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp.txt" afterPath="$PROJECT_DIR$/temp.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/hackRank/PosibilityOfTriangle.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/hackRank/PosibilityOfTriangle2.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/examcs240.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/exams.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/temp.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="home.iws" />
@@ -87,8 +75,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/algorithm/MergeSort.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/MergeSort_standard.java" />
         <option value="$PROJECT_DIR$/src/algorithm/recursion/MergeSort_Quick.java" />
         <option value="$PROJECT_DIR$/src/hackRank/SortLotsOfWords.java" />
         <option value="$PROJECT_DIR$/src/hackRank/ClosetToAvg.java" />
@@ -138,6 +124,8 @@
         <option value="$PROJECT_DIR$/src/algorithm/huffmanConpression/Temp.java" />
         <option value="$PROJECT_DIR$/src/algorithm/huffmanConpression/Tree.java" />
         <option value="$PROJECT_DIR$/src/algorithm/huffmanConpression/Huffman.java" />
+        <option value="$PROJECT_DIR$/src/hackRank/PosibilityOfTriangle.java" />
+        <option value="$PROJECT_DIR$/src/hackRank/PosibilityOfTriangle2.java" />
       </list>
     </option>
   </component>
@@ -325,51 +313,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="algorithm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="algorithm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huffmanConpression" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="algorithm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="binaryTrees" />
+              <option name="myItemId" value="hackRank" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -949,7 +893,7 @@
       <workItem from="1454920450904" duration="3532000" />
       <workItem from="1455661391606" duration="599000" />
       <workItem from="1456006870971" duration="298000" />
-      <workItem from="1456262410084" duration="14088000" />
+      <workItem from="1456262410084" duration="14364000" />
     </task>
     <task id="LOCAL-00001" summary="add bubblesort and loop">
       <created>1422201185382</created>
@@ -1021,7 +965,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235407000" />
+    <option name="totallyTimeSpent" value="235683000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="805" extended-state="6" />
@@ -1048,7 +992,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20028612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4460028" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4460028" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1393,20 +1337,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examcs240.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5121951" vertical-offset="27" max-vertical-offset="2550">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exams.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.450704" vertical-offset="2700" max-vertical-offset="4980">
-          <caret line="309" column="10" selection-start-line="309" selection-start-column="10" selection-end-line="309" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3266187" vertical-offset="6373" max-vertical-offset="16695">
@@ -1476,6 +1406,22 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hackRank/PosibilityOfTriangle2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hackRank/PosibilityOfTriangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12261581" vertical-offset="0" max-vertical-offset="1245">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
