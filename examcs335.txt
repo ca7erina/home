@@ -1,0 +1,164 @@
+
+1 What is a process control block(PCB)? Summarize the typical organization and
+content of a PCB.
+2 A traditional processor scheduler focuses on achieving fair allocation of processor
+time among the total set of processes. It is possible that one user or application may be
+running significantly more processes to the detrement of other users. Suggest a means
+of achieving a fair allocation of CPU time among different users.
+3 Explain the difference between symmetric multiprocessing and asymmetric
+multiprocessing.
+4 In disk scheduling, explain what advantages the C-LOOK algorithm has over the
+SCAN algorithm? Support your answer with an example.
+5 Compare and contrast the merits of socket based communication in Java with the
+Remote Method Invocation (RMI) mechanism. Use your experience from Practical 6
+of your coursework.
+6 Give a psuedo code software solution to the n-process mutual exclusion problem
+indicating the entry code and exit code to be executed by each process. Explain the
+components of your code.
+7 The first readers/writers concurrency problem prioritises readers and requires that no
+reader be kept waiting unless a writer has already obtained permission to use the
+shared item. Define a psuedo code solution to this coordination problem using
+semaphores. Use your experience from Practical 9 of your coursework.
+8 Describe the operation of a paged memory architecture using diagrams to support your
+answer. Explain clearly the process of memory translation and the benefits of paged
+memory.
+9 In the context of a virtual memory system what is meant by the terms “working set”
+and “page replacement algorithm”?
+Briefly discuss two practical page replacement algorithms.
+10 Describe the generic design requirements of a File System. List and explain some of
+the basic system calls typically provided for accessing and organising files.
+
+1. Explain the distinction between the Kernel of an operating system and an Operating
+System Distribution for a target environment.
+2. A Process Control Block is an execution context that can be used for independent
+scheduling of a process onto any available processor. Categorise and Identify the type
+of information stored in a typical process control block.
+3. If the following three jobs arrive in the following order at approximately the same time,
+calculate the Average Waiting Time, the Average Response Time and the Average
+Turnaround Time for each of the non-preemptive algorithms First Come First Served
+(FCFS) and Shortest Job First (SJF).
+4. What is a Distributed System? Outline the scheduling goals of a Distributed Operating
+System and the difficulties in achieving them.
+5. Disk Head Scheduling Policy determines the amount of movement incurred by the disk
+head when servicing requests. Assuming the disk head is at track 53, compare the head
+movement incurred by the First Come First Served (FCFS) algorithm versus the CLOOK algorithm for the following series of track requests:- 98, 183, 37, 122, 14, 124, 65, 67
+6. Compare and contrast the benefits of communication mechanisms based on Shared
+Memory versus those based on Message Passing.
+7. Give some motivations for implementing multithreaded programs.
+8. State the Producer Consumer problem and outline a solution using Semaphores. You do
+not need to supply syntactically correct code in any language, an algorithm or psuedo
+code expressing your idea will suffice.
+9. Compare the bitmap approach to the linked list approach for keeping track of a free
+memory space.
+10. In the context of File Systems, explain what is meant by the terms contiguous space
+allocation and indexed space allocation and explain which method is best, if any.
+
+1 State five general objectives of an operating system giving a brief
+explanation of each objective.
+
+2 Explain how processes and hardware devices communicate with
+the operating system to obtain services.
+
+3 In the context of non-preemptive task scheduling, a FCFS algorithm
+may cause long jobs to hold up short jobs and a SJF algorithm may
+starve long jobs indefinitely. Suggest a non-preemptive scheduling
+approach which attempts to resolve both problems and give an
+example scheduling sequence which demonstrates your approach.
+
+4 Discuss the operation of a hard disk and present a suitable
+scheduling algorithm for servicing requests.
+
+5 Consider some of the implementation alternatives in the design of a
+simple message passing mechanism. Explain some of the choices
+for how messages can be addressed, what synchronization
+semantics might apply, implications of buffered and non-buffered
+links, message size, and dealing with reliability and security.
+
+6 Explain how the algorithm below works to solve the mutual
+exclusion problem for n processes competing for access to a critical
+section.
+
+boolean[] choosing; int[] number;
+choosing[i] = true;
+number[i] = Max(number[0],number[1], ...,number[n-1])+1;
+choosing[i] = false;
+for (j = 0; j<n; j++) {
+while choosing[j] { }
+while ((number[j] != 0) &&
+((number[j],j) < (number[i],i))) {
+}
+}
+Critical Section
+number[i] = 0;
+Remainder Section
+
+7 A number of concurrent threads wish to carry out operations on a
+data item. Some operations involve reading the data item and
+others involve writing to it. While reader operations can access the
+data item concurrently without any adverse effects, a write
+operation requires exclusive access.
+Give an outline of how this synchronisation problem could be solved
+using semaphores so that no reader is kept waiting unless a writer
+has already obtained permission to use the shared item.
+
+8 Give an overview of the basic operation of a demand paged
+memory system.
+
+9 What is the motivation for implementing a hierarchical file system
+namespace instead of a flat namespace? Outline a scheme for
+implementing a hierarchical file system which uses index blocks for
+tracking file space allocation.
+
+10 Compare the Access List approach with the Capability List
+approach to implementing a protection domain access matrix.
+
+1 The traditional unix process scheduler was primarily designed for a
+time sharing interactive environment to give good response time to
+single process applications while ensuring longer background
+processes didn’t starve. Explain how this was achieved.
+
+2 Modern applications may be organized as a collection of
+cooperating processes. Discuss how the traditional unix scheduler
+scheme could be modified to give a fair share of scheduling time to
+applications regardless of the number of processes operating within
+each.
+
+3 How does scheduling in (i) a Distributed System and (ii) a RealTime System differ with that of a traditional timeshared centralised
+system?
+
+4 What is the difference between the interprocess communication
+abstractions known as Pipe and Socket?
+
+5 Explain the difference between executing a fork() system call
+and executing a pthread_create() call. Which is the better way
+of achieving concurrency within an application?
+
+6 What is a spin-lock and when would this mechanism be used? Give
+an example of how indivisible hardware instructions could be used
+to implement a spin-lock.
+
+7 Outline a solution to the producer/consumer problem using
+semaphores. Explain how producers are held up when the buffer is
+full and how consumers are held up when the buffer is empty, and
+how manipulation of the buffer structure itself is handled mutually
+exclusively.
+
+8 Say a disk platter has n tracks and you must devise a scheduling
+algorithm for servicing track requests. Assume latency time is
+negligible and only seek time is of concern.
+Describe a simple algorithm which ensures balanced distribution of
+service across the disk surface.
+Is there an optimal algorithm for this situation? Discuss.
+
+9 In demand paged memory systems, the memory manager must
+sometimes replace resident pages following a page fault.
+Is there an optimal algorithm for doing this? What other algorithms
+might be considered and how could they be implemented?
+
+10 The location of disk blocks allocated to files by the file system might
+be tracked using either a contiguous allocation, linked allocation or
+indexed allocation methods. Discuss the suitability of these
+schemes for different types of file and associated access and usage
+characteristics.
+
+
