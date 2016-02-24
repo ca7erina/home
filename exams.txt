@@ -2,7 +2,8 @@
 1 What is a process control block(PCB)? Summarize the typical organization and
 content of a PCB.
 2 A traditional processor scheduler focuses on achieving fair allocation of processor
-time among the total set of processes. It is possible that one user or application may be running significantly more processes to the detrement of other users. Suggest a means
+time among the total set of processes. It is possible that one user or application may be
+running significantly more processes to the detrement of other users. Suggest a means
 of achieving a fair allocation of CPU time among different users.
 3 Explain the difference between symmetric multiprocessing and asymmetric
 multiprocessing.
@@ -14,15 +15,18 @@ of your coursework.
 6 Give a psuedo code software solution to the n-process mutual exclusion problem
 indicating the entry code and exit code to be executed by each process. Explain the
 components of your code.
-7 The first readers/writers concurrency problem prioritises readers and requires that no reader be kept waiting unless a writer has already obtained permission to use the
+7 The first readers/writers concurrency problem prioritises readers and requires that no
+reader be kept waiting unless a writer has already obtained permission to use the
 shared item. Define a psuedo code solution to this coordination problem using
 semaphores. Use your experience from Practical 9 of your coursework.
-8 Describe the operation of a paged memory architecture using diagrams to support your answer. Explain clearly the process of memory translation and the benefits of paged
+8 Describe the operation of a paged memory architecture using diagrams to support your
+answer. Explain clearly the process of memory translation and the benefits of paged
 memory.
 9 In the context of a virtual memory system what is meant by the terms “working set”
 and “page replacement algorithm”?
 Briefly discuss two practical page replacement algorithms.
-10 Describe the generic design requirements of a File System. List and explain some of the basic system calls typically provided for accessing and organising files.
+10 Describe the generic design requirements of a File System. List and explain some of
+the basic system calls typically provided for accessing and organising files.
 
 1. Explain the distinction between the Kernel of an operating system and an Operating
 System Distribution for a target environment.
@@ -37,8 +41,7 @@ Turnaround Time for each of the non-preemptive algorithms First Come First Serve
 System and the difficulties in achieving them.
 5. Disk Head Scheduling Policy determines the amount of movement incurred by the disk
 head when servicing requests. Assuming the disk head is at track 53, compare the head
-movement incurred by the First Come First Served (FCFS) algorithm versus the CLOOK algorithm for the following series of track requests:-
-98, 183, 37, 122, 14, 124, 65, 67
+movement incurred by the First Come First Served (FCFS) algorithm versus the CLOOK algorithm for the following series of track requests:- 98, 183, 37, 122, 14, 124, 65, 67
 6. Compare and contrast the benefits of communication mechanisms based on Shared
 Memory versus those based on Message Passing.
 7. Give some motivations for implementing multithreaded programs.
@@ -49,41 +52,32 @@ code expressing your idea will suffice.
 memory space.
 10. In the context of File Systems, explain what is meant by the terms contiguous space
 allocation and indexed space allocation and explain which method is best, if any.
-CS240 Page 1 of 1 Summer 2014
-OLLSCOIL NA hÉIREANN MÁ NUAD
-THE NATIONAL UNIVERSITY OF IRELAND MAYNOOTH
-SUMMER 2013 EXAMINATION
-CS240
-Operating Systems
-Dr. S. Flynn, Dr. A. Winstanley, Mr. D. Kelly
-Time allowed: 2 hours
-Answer any eight questions for full marks.
-CS240 Page 1 of 2 Summer 2013
+
 1 State five general objectives of an operating system giving a brief
 explanation of each objective.
-[10 Marks]
+
 2 Explain how processes and hardware devices communicate with
 the operating system to obtain services.
-[10 Marks]
+
 3 In the context of non-preemptive task scheduling, a FCFS algorithm
 may cause long jobs to hold up short jobs and a SJF algorithm may
 starve long jobs indefinitely. Suggest a non-preemptive scheduling
 approach which attempts to resolve both problems and give an
 example scheduling sequence which demonstrates your approach.
-[10 Marks]
+
 4 Discuss the operation of a hard disk and present a suitable
 scheduling algorithm for servicing requests.
-[10 Marks]
+
 5 Consider some of the implementation alternatives in the design of a
 simple message passing mechanism. Explain some of the choices
 for how messages can be addressed, what synchronization
 semantics might apply, implications of buffered and non-buffered
 links, message size, and dealing with reliability and security.
-[10 Marks]
+
 6 Explain how the algorithm below works to solve the mutual
 exclusion problem for n processes competing for access to a critical
 section.
-[10 Marks]
+
 boolean[] choosing; int[] number;
 choosing[i] = true;
 number[i] = Max(number[0],number[1], ...,number[n-1])+1;
@@ -97,7 +91,7 @@ while ((number[j] != 0) &&
 Critical Section
 number[i] = 0;
 Remainder Section
-CS240 Page 2 of 2 Summer 2013
+
 7 A number of concurrent threads wish to carry out operations on a
 data item. Some operations involve reading the data item and
 others involve writing to it. While reader operations can access the
@@ -106,74 +100,227 @@ operation requires exclusive access.
 Give an outline of how this synchronisation problem could be solved
 using semaphores so that no reader is kept waiting unless a writer
 has already obtained permission to use the shared item.
-[10 Marks]
+
 8 Give an overview of the basic operation of a demand paged
 memory system.
-[10 Marks]
+
 9 What is the motivation for implementing a hierarchical file system
 namespace instead of a flat namespace? Outline a scheme for
 implementing a hierarchical file system which uses index blocks for
 tracking file space allocation.
-[10 Marks]
+
 10 Compare the Access List approach with the Capability List
 approach to implementing a protection domain access matrix.
-[10 Marks]
-OLLSCOIL NA hÉIREANN MÁ NUAD
-THE NATIONAL UNIVERSITY OF IRELAND MAYNOOTH
-SUMMER 2012 EXAMINATION
-CS240
-Operating Systems
-Dr. M. McNeill, Dr. A. Winstanley, Mr. D. Kelly
-Time allowed: 2 hours
-Answer all questions
-CS240 Page 1 of 2 Summer 2012
+
 1 The traditional unix process scheduler was primarily designed for a
 time sharing interactive environment to give good response time to
 single process applications while ensuring longer background
 processes didn’t starve. Explain how this was achieved.
-[10 Marks]
+
 2 Modern applications may be organized as a collection of
 cooperating processes. Discuss how the traditional unix scheduler
 scheme could be modified to give a fair share of scheduling time to
 applications regardless of the number of processes operating within
 each.
-[10 Marks]
+
 3 How does scheduling in (i) a Distributed System and (ii) a RealTime System differ with that of a traditional timeshared centralised
 system?
-[10 Marks]
+
 4 What is the difference between the interprocess communication
 abstractions known as Pipe and Socket?
-[10 Marks]
+
 5 Explain the difference between executing a fork() system call
 and executing a pthread_create() call. Which is the better way
 of achieving concurrency within an application?
-[10 Marks]
+
 6 What is a spin-lock and when would this mechanism be used? Give
 an example of how indivisible hardware instructions could be used
 to implement a spin-lock.
-[10 Marks]
+
 7 Outline a solution to the producer/consumer problem using
 semaphores. Explain how producers are held up when the buffer is
 full and how consumers are held up when the buffer is empty, and
 how manipulation of the buffer structure itself is handled mutually
 exclusively.
-[10 Marks]
+
 8 Say a disk platter has n tracks and you must devise a scheduling
 algorithm for servicing track requests. Assume latency time is
 negligible and only seek time is of concern.
 Describe a simple algorithm which ensures balanced distribution of
 service across the disk surface.
 Is there an optimal algorithm for this situation? Discuss.
-[10 Marks]
+
 9 In demand paged memory systems, the memory manager must
 sometimes replace resident pages following a page fault.
 Is there an optimal algorithm for doing this? What other algorithms
 might be considered and how could they be implemented?
-[10 Marks]
+
 10 The location of disk blocks allocated to files by the file system might
 be tracked using either a contiguous allocation, linked allocation or
 indexed allocation methods. Discuss the suitability of these
 schemes for different types of file and associated access and usage
 characteristics.
+
+
+
+1. Draw a Simplified State Transition Diagram describing the typical life cycle of a
+process within an operating system and explain what causes the transitions between
+states in your diagram.
+2. What is the benefit of a Shortest Job First execution policy? What problems might such
+a policy present to some processes? How could future knowledge of the job length be
+estimated?
+3. In modeling the performance of a queuing system you must address (a) the arrival
+pattern of tasks, (b) how tasks are queued and (c) the processing capacity and time of
+the service. Discuss some of the potential dynamics of these three aspects of a queuing
+system.
+4. Explain clearly how a process is created in Unix and how the new child process
+distinguishes itself from the parent and can follow a different execution sequence while
+retaining access to its parent’s I/O devices.
+5. Compare and contrast the two Unix interprocess communication paradigms:- message
+queues and pipes.
+6. State the necessary conditions required for a good solution to the Mutual Exclusion
+problem. Comment on the application of a spinlock for implementing mutual exclusion.
+7. State the Dining Philosophers problem and outline a deadlock free solution using
+semaphores.
+8. A computer memory system is composed of a hierarchy of mechanical and electrical
+components. Describe such a hierarchy and explain the function of the hierarchical
+layers
+9. When a program is loaded into memory with other programs two problems need to be
+solved:- (1) the prevention of access to its address space by other programs and (2) the
+binary image of the program needs to be compiled in such a way that it can execute no
+matter what part of memory it is loaded in. Explain how paged memory systems can
+solve both of these problems.
+10. Describe three space allocation techniques that a file system could use for allocating
+free space to files. Comment on the data structures needed to implement these
+allocation techniques and the efficiency of file processing operations.
+
+1. What is meant by Cloud Computing and state some of its benefits?
+2. Describe the lifecycle of a typical process from creation to termination using a State
+Transition Diagram.
+3. If the following three jobs arrive in the following order at approximately the same time,
+calculate the Average Waiting Time, the Average Response Time and the Average
+Turnaround Time using a Round Robin(RR) algorithm with Quantum=1 and again
+seperately with Quantum=3.
+4. Distinguish between Soft Real Time Systems and Hard Real Time Systems. Briefly
+outline two real-time scheduling algorithms.
+5. Describe the physical operation of a magnetic hard disk and the organization of its
+recording surface.
+6. Discuss alternative synchronisation semantics for implementing message passing
+send() and receive() primitives and the implications of different semantics on
+their implementation.
+7. Give the advantages of implementing a thread programming interface at the Kernel
+level rather than as a user space library.
+8. State the Dining Philosophers problem and outline a deadlock free solution using
+Semaphores. You do not need to supply syntactically correct code in any language, an
+algorithm or psuedo code expressing your idea will suffice.
+9. Explain the operation of a paged memory architecture, using a diagram to illustrate
+your answer.
+10. The picture overleaf describes a disk with a 16 block capacity storing a hierarchical
+filesystem with files described using indexed allocation. Analyse the picture and
+reconstruct the file namespace in the form of a tree from the root directory identifying
+all files and directories stored in the filesystem, positioning them at their appropriate
+locations in the tree.
+
+1 Describe the typical life cycle of a process from creation to
+termination, using a diagram to help illustrate your answer.
 [10 Marks]
-CS240 Page 2 of 2 Summer 2012
+2 The Shortest Job First algorithm (SJF) is optimal in terms of job
+throughput in non-preemptive scheduling situations. It requires
+future knowledge of the task length in order to choose a task. How
+could the task length be estimated in practice, where this future
+knowledge isn’t available?
+[10 Marks]
+3 The Unix scheduler uses a priority based round robin process
+scheduling algorithm. How are priorities calculated? How does the
+system ensure that lower priority tasks will be serviced?
+[10 Marks]
+4 Give a formula for calculating the average task turnaround time T
+for a processor that can process μ tasks per second, where tasks
+arrive at a rate of λ per second.
+If a system has n processors, all with the same performance,
+compare the effect on T for the system when a separate queue is
+employed for each processor with arrival rate λ against having a
+single queue with arrival rate nλ.
+[10 Marks]
+5 Pipes, Named Pipes and Sockets are three interprocess
+communication mechanisms available in Unix systems. Assuming
+that Pipes are a faster mechanism than Named Pipes and that
+Sockets are the slowest mechanism of all, discuss situations where
+a programmer might choose to use each mechanism.
+[10 Marks]
+6 Compare and contrast the benefits deriving from the
+implementation of a Thread Library as a user space package
+against an implementation at the operating system level.
+[10 Marks]
+CS240 Page 2 of 3 Autumn 2013
+7 The countries Peru and Bolivia have national train routes which
+circuit their respective countries. Along the border however, a
+shared section of single track through a mountain pass is used by
+both. Collisions occur when trains simultaneously enter the pass.
+The Drivers are Blind and Deaf and we need a method of
+preventing collisions.
+It is proposed that before entering the pass, a driver must stop his
+train, walk over to a bowl and reach into it to see if it contains a
+rock. If the bowl is empty, he finds a rock and drops it in the bowl,
+then drives the train into the pass. When the train has cleared the
+pass, he must walk back to the bowl and remove the rock. If a
+driver arriving at the pass finds a rock in the bowl, he leaves it
+there. He repeatedly takes a siesta and rechecks the bowl until he
+finds the bowl empty. Then he drops a rock in the bowl and enters
+the pass.
+It is claimed that subversive schedules made up by the Peruvian
+officials could block the Bolivian train forever. Explain.
+Unfortunately, one day the two trains crashed. Explain.
+Modify the algorithm above to suggest a more correct solution to
+this mutual exclusion problem.
+[10 Marks]
+8 What feature of synchronization does the Dining Philosophers
+problem try to elucidate. Outline a solution to the Dining
+Philosophers problem for five philosophers.
+[10 Marks]
+9 In the context of a virtual memory system what is meant by the
+terms “working set” and “page replacement algorithm”? Discuss the
+minimum and maximum size of the working set.
+Using the FIFO algorithm and a working set of size three pages on
+the reference string 0,4,1,4,2,1,5,2, calculate the number of page
+faults assuming that the working set is empty initially.
+[10 Marks]
+CS240 Page 2 of 3 Autumn 2013
+10 The domain model of protection associates objects and access
+rights with particular domains of execution.
+Discuss alternative ways in which the domain model may be
+implemented in practice.
+[10 Marks]
+
+1 What are the main functions and purpose of an operating system? [10 Marks]
+2 Given the following process CPU burst information, use Round Robin to
+demonstrate the scheduling sequence for a time quantum of one time unit
+and for a time quantum of three units. Comment on the performance.
+[10 Marks]
+3 Give a brief description of two real-time scheduling algorithms. [10 Marks]
+4 Write a note on three alternative ways for tracking disk space allocated to
+files.
+[10 Marks]
+5 Compare the First Come First Served algorithm with the C-LOOK
+algorithm for servicing the following set of track requests. 98, 183, 37, 122, 14, 124, 65, 67
+
+6 Give an account of your understanding of the benefits of Remote Method
+Invocation over Socket based communication from the programmer’s
+perspective.
+[10 Marks]
+7 Explain the difference between processes and threads in the Unix
+operating system and explain how both abstractions are created.
+[10 Marks]
+8 Give a definition for semaphore wait (P) and signal (V) operations which
+do not incur busy waiting. Suggest also how fair access to the semaphore
+could be implemented. Explain your answers.
+[10 Marks]
+CS240 Page 1 of 2 Autumn 2012
+9 What are the necessary conditions for a deadlock among a group of
+processes and how could a deadlock be prevented?
+[10 Marks]
+10 The first readers/writers problem solution prioritises readers over writers
+in that a new reader is never kept waiting if other readers are already
+active. Describe algorithmically how the synchronization between readers
+and writers can be achieved using semaphores.
+[10 Marks]

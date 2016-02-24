@@ -1,164 +1,249 @@
+1 (a) Discuss the Requirement Analysis phase and System Design
+phase in the Waterfall model in terms of (i) the purpose of these
+phases (ii) the activities involved and (iii) the deliverables.
+[12 marks]
+(b) Explain what architectural design strategies should be chosen to
+address the non-functional criteria (i) availability and (ii)
+performance
+[6 marks]
+(c) Sketch a swim lane activity diagram for the following scenario:
+“Mary will connect to the site of an e-commerce system and
+search for a camera. The system will provide detailed
+information about the product with a price or it says that it’s out
+of stock. She will choose a camera if it is available. She will then
+be prompted to pay for the camera and provide payment details
+as well as a delivery address. Once the payment has been
+cleared by the bank authentication system an email is sent to
+Mary to confirm the purchase and the purchase is complete”.
+[7 marks]
+[25 marks]
+2 (a) For the SCRUM approach to software development explain the
+following three terms. Also, sketch a diagram to show their
+relationship to each other
+i) Product backlog
+ii) Sprint
+iii) Sprint backlog
+[9 marks]
+(b) Discuss the following principles when designing a GUI
+i) User familiarity
+ii) Consistency
+iii) Reduce the user’s memory load
+iv) Recoverability
+[8 marks]
+(c) Explain (within a maximum of 6 lines) why the V model in
+software process model is also called the “Validation and
+Verification” model.
+[8 marks]
+[25 marks]
+3 (a) Using the Client Server 3 tier architectural design pattern,
+suggest the components at the (i) interface layer and the (ii)
+business application layer that might be part of an e-commerce
+system that allows users to buy products on the internet. Your
+answer should include the component’s name, its purpose and
+its location/layer in the architecture.
+[12 marks]
+(b) You are a project manager; explain in what context you will [8 marks]
+adapt the incremental process models for software
+development.
+(c) Give an example of where the state of an object depends on
+that object’s association links
+[5 marks]
+[25 marks]
+4 (a) Present 3 advantages of Incremental development models over
+the traditional development model such as the water fall model.
+[6 marks]
+(b) Most of a system's requirements specify that the system should
+do what it is intended to do. Is it also appropriate to specify that
+the system should not do what it is not intended to do? If your
+answer is no, explain why; if your answer is yes, give an
+example.
+[6 marks]
+(c) In general when a company would like to advertise its products,
+it creates campaigns of advertisements. A campaign of
+advertisement for a product includes several advertisements on
+several media outlets such as television, radio stations,
+newspapers and magazines, in cinemas and the internet. These
+companies would like to control if the advertisements they paid
+for appeared as they were supposed to.
+A market research company intends to develop an Advertising
+Expenditure system to provide services to those companies.
+This market research company collects data on advertising from
+various media outlets such as a short description about the
+advertising content, when the advertisement appeared (date
+and time), the duration, where it appeared (e.g. in what channel,
+what magazine, etc.). The collected data then can be analyzed
+in various ways to measure the expenditure advertising of these
+companies. A client (the advertising company) can request a
+report about the advertisements that have appeared for a
+product and the expenditure information.
+Draw a class diagram that includes information about the
+Campaign, Advertisement, the Client and any additional
+information as necessary to represent the data aspect for the
+Advertising Expenditure system.
 
-1 What is a process control block(PCB)? Summarize the typical organization and
-content of a PCB.
-2 A traditional processor scheduler focuses on achieving fair allocation of processor
-time among the total set of processes. It is possible that one user or application may be
-running significantly more processes to the detrement of other users. Suggest a means
-of achieving a fair allocation of CPU time among different users.
-3 Explain the difference between symmetric multiprocessing and asymmetric
-multiprocessing.
-4 In disk scheduling, explain what advantages the C-LOOK algorithm has over the
-SCAN algorithm? Support your answer with an example.
-5 Compare and contrast the merits of socket based communication in Java with the
-Remote Method Invocation (RMI) mechanism. Use your experience from Practical 6
-of your coursework.
-6 Give a psuedo code software solution to the n-process mutual exclusion problem
-indicating the entry code and exit code to be executed by each process. Explain the
-components of your code.
-7 The first readers/writers concurrency problem prioritises readers and requires that no
-reader be kept waiting unless a writer has already obtained permission to use the
-shared item. Define a psuedo code solution to this coordination problem using
-semaphores. Use your experience from Practical 9 of your coursework.
-8 Describe the operation of a paged memory architecture using diagrams to support your
-answer. Explain clearly the process of memory translation and the benefits of paged
-memory.
-9 In the context of a virtual memory system what is meant by the terms “working set”
-and “page replacement algorithm”?
-Briefly discuss two practical page replacement algorithms.
-10 Describe the generic design requirements of a File System. List and explain some of
-the basic system calls typically provided for accessing and organising files.
-
-1. Explain the distinction between the Kernel of an operating system and an Operating
-System Distribution for a target environment.
-2. A Process Control Block is an execution context that can be used for independent
-scheduling of a process onto any available processor. Categorise and Identify the type
-of information stored in a typical process control block.
-3. If the following three jobs arrive in the following order at approximately the same time,
-calculate the Average Waiting Time, the Average Response Time and the Average
-Turnaround Time for each of the non-preemptive algorithms First Come First Served
-(FCFS) and Shortest Job First (SJF).
-4. What is a Distributed System? Outline the scheduling goals of a Distributed Operating
-System and the difficulties in achieving them.
-5. Disk Head Scheduling Policy determines the amount of movement incurred by the disk
-head when servicing requests. Assuming the disk head is at track 53, compare the head
-movement incurred by the First Come First Served (FCFS) algorithm versus the CLOOK algorithm for the following series of track requests:- 98, 183, 37, 122, 14, 124, 65, 67
-6. Compare and contrast the benefits of communication mechanisms based on Shared
-Memory versus those based on Message Passing.
-7. Give some motivations for implementing multithreaded programs.
-8. State the Producer Consumer problem and outline a solution using Semaphores. You do
-not need to supply syntactically correct code in any language, an algorithm or psuedo
-code expressing your idea will suffice.
-9. Compare the bitmap approach to the linked list approach for keeping track of a free
-memory space.
-10. In the context of File Systems, explain what is meant by the terms contiguous space
-allocation and indexed space allocation and explain which method is best, if any.
-
-1 State five general objectives of an operating system giving a brief
-explanation of each objective.
-
-2 Explain how processes and hardware devices communicate with
-the operating system to obtain services.
-
-3 In the context of non-preemptive task scheduling, a FCFS algorithm
-may cause long jobs to hold up short jobs and a SJF algorithm may
-starve long jobs indefinitely. Suggest a non-preemptive scheduling
-approach which attempts to resolve both problems and give an
-example scheduling sequence which demonstrates your approach.
-
-4 Discuss the operation of a hard disk and present a suitable
-scheduling algorithm for servicing requests.
-
-5 Consider some of the implementation alternatives in the design of a
-simple message passing mechanism. Explain some of the choices
-for how messages can be addressed, what synchronization
-semantics might apply, implications of buffered and non-buffered
-links, message size, and dealing with reliability and security.
-
-6 Explain how the algorithm below works to solve the mutual
-exclusion problem for n processes competing for access to a critical
-section.
-
-boolean[] choosing; int[] number;
-choosing[i] = true;
-number[i] = Max(number[0],number[1], ...,number[n-1])+1;
-choosing[i] = false;
-for (j = 0; j<n; j++) {
-while choosing[j] { }
-while ((number[j] != 0) &&
-((number[j],j) < (number[i],i))) {
-}
-}
-Critical Section
-number[i] = 0;
-Remainder Section
-
-7 A number of concurrent threads wish to carry out operations on a
-data item. Some operations involve reading the data item and
-others involve writing to it. While reader operations can access the
-data item concurrently without any adverse effects, a write
-operation requires exclusive access.
-Give an outline of how this synchronisation problem could be solved
-using semaphores so that no reader is kept waiting unless a writer
-has already obtained permission to use the shared item.
-
-8 Give an overview of the basic operation of a demand paged
-memory system.
-
-9 What is the motivation for implementing a hierarchical file system
-namespace instead of a flat namespace? Outline a scheme for
-implementing a hierarchical file system which uses index blocks for
-tracking file space allocation.
-
-10 Compare the Access List approach with the Capability List
-approach to implementing a protection domain access matrix.
-
-1 The traditional unix process scheduler was primarily designed for a
-time sharing interactive environment to give good response time to
-single process applications while ensuring longer background
-processes didn’t starve. Explain how this was achieved.
-
-2 Modern applications may be organized as a collection of
-cooperating processes. Discuss how the traditional unix scheduler
-scheme could be modified to give a fair share of scheduling time to
-applications regardless of the number of processes operating within
-each.
-
-3 How does scheduling in (i) a Distributed System and (ii) a RealTime System differ with that of a traditional timeshared centralised
-system?
-
-4 What is the difference between the interprocess communication
-abstractions known as Pipe and Socket?
-
-5 Explain the difference between executing a fork() system call
-and executing a pthread_create() call. Which is the better way
-of achieving concurrency within an application?
-
-6 What is a spin-lock and when would this mechanism be used? Give
-an example of how indivisible hardware instructions could be used
-to implement a spin-lock.
-
-7 Outline a solution to the producer/consumer problem using
-semaphores. Explain how producers are held up when the buffer is
-full and how consumers are held up when the buffer is empty, and
-how manipulation of the buffer structure itself is handled mutually
-exclusively.
-
-8 Say a disk platter has n tracks and you must devise a scheduling
-algorithm for servicing track requests. Assume latency time is
-negligible and only seek time is of concern.
-Describe a simple algorithm which ensures balanced distribution of
-service across the disk surface.
-Is there an optimal algorithm for this situation? Discuss.
-
-9 In demand paged memory systems, the memory manager must
-sometimes replace resident pages following a page fault.
-Is there an optimal algorithm for doing this? What other algorithms
-might be considered and how could they be implemented?
-
-10 The location of disk blocks allocated to files by the file system might
-be tracked using either a contiguous allocation, linked allocation or
-indexed allocation methods. Discuss the suitability of these
-schemes for different types of file and associated access and usage
-characteristics.
+1. (a) Present and explain the different phases of the waterfall model
+in the software development process. You may include a
+diagram to illustrate your answer.
+(b) Discuss three advantages and three disadvantages of the
+waterfall model.
+(c) Explain the necessity for project scheduling in software project
+management.
+2. (a) State concisely what functional requirements and non-functional
+requirements are.
+(b) If you develop an Online Hotel booking system, what are four
+functional requirements you are interested in?
+(c). Describe the actor, use case, association and dependency
+elements of a use case diagram with UML. Create a use case
+diagram for the following social networking system:
+A new user can create an account. Existing users just sign in.
+Users can create and update their profile, send requests to make
+friends to other users. Users can post their status or upload their
+photos.
+3. (a) Discuss the emergence of agile methods within the context of
+iterative and incremental development.
+(b) Describe the terms product backlog and sprint in SCRUM
+approach.
+(c) Describe the main activities in XP Planning.
+4.(a) Explain the difference between Composition and Aggregation
+association. Give an example of these two types of association.
+(b). A part of the requirement analysis of a DVD renting system is
+described as follows:
+A DVD renting shop wants to develop an online DVD renting
+system. The system should allow users to search DVDs by title,
+make online bookings and then collect the DVD at the shop or
+ask for delivery at home. In order to make a booking, users
+need to sign into the system. A new user needs to create an
+account including their email address and password, their home
+address (optional) and their credit card information.
+A DVD title includes the following information: a title type such
+as adventure film, classic film, fiction film, or music, or
+documentary, etc., a title name, a production year, some
+artist/singer names, and an image of the corresponding DVD.
+A DVD title is associated with several physical DVDs. Each
+DVD has a unique code, and a status such as rented, or
+available. A booking is made on DVD title(s). A customer can
+book several DVD titles, indicate the date they want to collect
+the DVDs or if they want the DVD to be delivered at their
+address. In this case, they need to provide their home address.
+When the customer collects the DVDs (or they are delivered),
+they are updated status to rented.
+Design a class diagram or entity relationship diagram to
+describe the following information and relationships between
+them: Customer, DVD title, DVD, Booking, Collection/Delivery.
 
 
+1 (a) All software processes includes four fundamental process
+activities: software specification, software development, software
+validation and software evolution. Discuss these stages in the
+software lifecycle with reference to the classical waterfall model.
+What are the advantages and disadvantages of this model?
+[10 marks]
+(b) Describe the 2 basic types of Evolutionary Development. [8 marks]
+(c) Iterative development can be applied to any of the generic
+process models. Using a diagram, explain how the concept of
+iteration is implemented in Incremental delivery. What are the
+advantages of Incremental Development?
+[7 marks]
+[25 marks]
+2 (a) Discuss the emergence of agile methods within the context of
+iterative and incremental development.
+[8 marks]
+(b) Describe, using a diagram the process stages and practices in
+‘Extreme Programming’. Define what three of the following terms
+mean and explain how they are applied to the XP development
+process:
+i. User Stories
+ii. Release Planning
+iii. CRC Cards
+iv. Spike Solution
+[12 marks]
+(c) If you were a software development manager attempting to
+evaluate whether to apply an Extreme Programming software
+development model to a project, what software project and team
+characteristics do you think should influence your decision?
+[5 marks]
+[25 marks]
+3 (a) Describe the actor, use case, association and dependency
+elements of a use case diagram. Give an example of how they
+are used.
+[15 marks]
+(b) A house alarm system is made up of a smoke alarm system and
+a burglar alarm system. The smoke alarm system will issue a
+warning when its smoke alarm detects smoke as will the burglar
+alarm when its motion sensors or perimeter sensors detect
+intruders. Both of these will alert the authorities when the events
+occur. The authorities comprise the police and the fire
+department. The home owner arms and disarms the system.
+The system authenticates the owner.
+Identify the actors and use cases in the system and create a
+UML use case diagram for the system.
+[10 marks]
+[25 marks]
+4 (a) Describe the different associations/relationships used in a UML
+class diagram. Illustrate each with a simple example. Then,
+explain, using a simple example, the difference between the
+Aggregation and Composition association.
+[8 marks]
+(b) Describe the purpose of the phases of the Unified Process
+Model. Use a diagram to illustrate how the different disciplines
+evolve through the different phases.
+[10 marks]
+(c) Draw a sequence diagram with the following specification:
+– John is a computer user who wants to check his
+email
+– When he clicks on his computer to check for
+emails the server will send any unsent ones
+– It then checks for new emails and the server
+returns a corresponding response
+– If there are new emails these will be downloaded
+– Any old emails will be deleted
+
+1 (a) Discuss what risk management is in relation to the management
+of a software process - include a diagram as part of your
+answer.
+[5 marks]
+(b) What is black box testing? What is white box testing? [6 marks]
+(c) With the aid of an example explain the concept of equivalence
+partitioning in the area of software testing.
+[6 marks]
+(d) Using the diagram below discuss how path testing works in the
+area of software testing, and identify all possible test cases for
+this binary search flow graph.
+[8 marks]
+[25 marks]
+2 (a) In relation to software requirements explain the following terms:
+functional requirements, non-functional requirement and domain
+requirements.
+[5 marks]
+(b) Using an ATM as an example, describe three functional
+requirements and two non-functional requirements.
+[5 marks]
+(c) Briefly describe the waterfall and spiral software process models
+mentioning any problems associated with them. Include
+diagrams in your answer.
+[15 marks]
+CS335 Page 1 of 2 Autumn 2012
+[25 marks]
+3 (a) There are many different schemas to structure a software
+development team. Describe two such schemes and discuss
+their advantages and disadvantages
+[6 marks]
+(b) Describe the different types of visibility that can be applied to
+the elements in a UML model. You should include the symbol
+used in UML to represent each of these types.
+[9 marks]
+(c) Discuss how Component Based Software Engineering works
+and describe the advantages of using this technique.
+[10 marks]
+[25 marks]
+4 (a) Describe the difference between Aggregation and Composition,
+and show how they are represented in the Unified Modeling
+Language (UML) by providing an example of each.
+[5 marks]
+(b) Describe the process of integration testing using a diagram to
+help explain the process.
+[10 marks]
+(c) The table below shows activities, their duration, and activity
+interdependencies. Given this information draw the corresponding
+activity network. You can assign any project start date. On your
+diagram you should highlight the critical path.
