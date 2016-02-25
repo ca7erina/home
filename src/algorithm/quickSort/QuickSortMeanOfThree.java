@@ -1,4 +1,4 @@
-package quickSort;
+package algorithm.quickSort;
 /*
  * O(n*logn) quicker than mergesort
  * 
