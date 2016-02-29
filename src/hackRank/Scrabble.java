@@ -1,6 +1,8 @@
 package hackRank;
 
+
 import java.io.*;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 /**
@@ -29,18 +31,112 @@ import java.util.Scanner;
  *
  */
 public class Scrabble {
+
+    static final String[][] scoringList = new String[][] { { "A", "1" },
+            { "B", "3" }, { "C", "3" }, { "D", "2" }, { "E", "1" },
+            { "F", "4" }, { "G", "2" }, { "H", "4" }, { "I", "1" },
+            { "J", "8" }, { "K", "5" }, { "L", "1" }, { "M", "3" },
+            { "N", "1" }, { "O", "1" }, { "P", "3" }, { "Q", "10" },
+            { "R", "1" }, { "S", "1" }, { "T", "1" }, { "U", "1" },
+            { "V", "4" }, { "W", "4" }, { "X", "8" }, { "Y", "4" },
+            { "Z", "10" } };
+
     public static void main(String args[]){
+        System.out.println("Enter your letters:");
         Scanner myScanner = new Scanner(System.in);
         String letters = myScanner.nextLine().trim();
 
-
-
+        int topRank = 10;
+        System.out.println("Here are the top "+topRank+" suggestions:");
         FileIO reader = new FileIO();
-        String[] contents = reader.load("dictionary.txt");
+        String[] dic = reader.load("dictionary.txt");
+
+        PriorityQueue<Node> result= getResult(letters,dic);
+
+
+        for(int i=0;i<topRank;i++){
+            System.out.println(result.poll().word);
+        }
+    }
+
+    public static PriorityQueue<Node> getResult(String letters, String[] dic){
+        PriorityQueue<Node> result= new PriorityQueue<Node>();
+        for(String dicWord:dic){
+            Node word = getNode(letters,dicWord);
+            if (word.score>0){
+                result.add(word);
+            }
+        }
+        return result;
 
     }
+
+    public static int getScoreByMatchingLetter(char letter){
+        int result =0;
+        for(int i=0;i<scoringList.length;i++){
+
+            if(scoringList[i][0].equals((letter + "").toUpperCase())){
+                result = Integer.parseInt(scoringList[i][1]);
+            }
+        }
+       // System.out.println(result);
+        return result;
+
+    }
+
+
+    public static Node getNode(String letters, String dicWord){
+        Node result = new Node();
+        String temp= dicWord;
+        int score = 0;
+        for(int i=0; i<letters.length();i++){
+            //find
+            char target = letters.charAt(i);
+                int index = temp.indexOf(target);
+                if(index >=0){ //contain this target char;
+                    temp = temp.replaceFirst(target+"","");
+                    //score=score+getScoreByMatchingLetter(target);
+                    score ++;
+                    result = new Node();
+                }
+
+        }
+        if(temp.length()==0){
+            result.word=dicWord;
+            if(letters.length()==dicWord.length()){
+                score++;
+            }
+            score = score+dicWord.length();
+            result.score = score;
+        }
+
+
+        return result;
+    }
+
 }
 
+class Node implements Comparable<Node> {
+    public String word ;             // first node of tree
+    public int score = 0;
+
+
+    public Node()
+    {
+        word = "";
+        score =0;
+    }
+
+    public int compareTo(Node object) {
+        if(score - object.score > 0) { //compare the cumulative frequencies of the tree
+            return -1;
+        } else if(score - object.score < 0) {
+            return 1;   //return 1 or -1 depending on whether these frequencies are bigger or smaller
+        } else {
+            return 0;   //return 0 if they're the same
+        }
+    }
+}
 
  class FileIO{
 
@@ -100,4 +196,6 @@ public class Scrabble {
             if (output != null) output.close();
         }
     }
+
+
 }
