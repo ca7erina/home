@@ -1,4 +1,4 @@
-package cs211.lab3.compressor;
+package algorithm.huffmanConpression;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-import cs211.lab3.Huffman;
 
 public class Compressor {
 
@@ -20,10 +19,14 @@ public class Compressor {
 
 	public static int[] encodeFile(String orignfilename, String outPutencodedfilename) {
 		int[] frequencyTable = null;
+		FileReader fileReader = null;
+		BufferedReader bufferedReader = null;
+		FileWriter fileWriter = null;
+		BufferedWriter bufferedWriter = null;
 		// read file ;
 		try {
-			FileReader fileReader = new FileReader(orignfilename);
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			fileReader = new FileReader(orignfilename);
+			bufferedReader = new BufferedReader(fileReader);
 
 			String allContent = "";
 			String line = "";
@@ -31,27 +34,48 @@ public class Compressor {
 				allContent += line + "\n";
 
 			}
-			bufferedReader.close();
+
 
 			//encode and writer code
-			FileWriter fileWriter = new FileWriter(outPutencodedfilename);
-			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+			fileWriter = new FileWriter(outPutencodedfilename);
+			bufferedWriter = new BufferedWriter(fileWriter);
 			frequencyTable =Huffman.getFrequencyArray(allContent); 
 			String encoded = Huffman.encode(frequencyTable, allContent);
 			bufferedWriter.write(encoded);
-			bufferedWriter.close();
+
 
 		} catch (IOException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				if (bufferedReader!= null) {
+					bufferedReader.close();
+
+				}
+				if (bufferedWriter!= null) {
+					bufferedWriter.close();
+
+				}
+
+			}
+			catch (IOException ex) {
+				System.out.println("Input output exception while processing file");
+				ex.printStackTrace();
+			}
+
 		}
 		return frequencyTable;
 	}
 
 	public static void decodeFile(String encodedfilename, int[] frequencyTable, String outPutplainTextFilename) {
 		//read encodedfile;
+		FileReader fileReader = null;
+		BufferedReader bufferedReader = null;
+		FileWriter fileWriter = null;
+		BufferedWriter bufferedWriter = null;
 		try {
-			FileReader fileReader = new FileReader(encodedfilename);
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			fileReader = new FileReader(encodedfilename);
+			bufferedReader = new BufferedReader(fileReader);
 
 			String allCode = "";
 			String line = "";
@@ -59,20 +83,36 @@ public class Compressor {
 				allCode += line + "\n";
 
 			}
-			bufferedReader.close();
+
 			//decode
 			String content = Huffman.decode(frequencyTable, allCode);
 			
 			//write file
-			FileWriter fileWriter = new FileWriter(outPutplainTextFilename);
-			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+			fileWriter = new FileWriter(outPutplainTextFilename);
+			bufferedWriter = new BufferedWriter(fileWriter);
 		
 	
 			bufferedWriter.write(content);
-			bufferedWriter.close();
+
 			
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally{
+			try {
+				if (bufferedReader!= null) {
+					bufferedReader.close();
+
+				}
+				if (bufferedWriter!= null) {
+					bufferedWriter.close();
+
+				}
+
+			}
+			catch (IOException ex) {
+				System.out.println("Input output exception while processing file");
+				ex.printStackTrace();
+			}
 		}
 		
 		

@@ -37,6 +37,7 @@ public class Scrabble {
 
         FileIO reader = new FileIO();
         String[] contents = reader.load("dictionary.txt");
+
     }
 }
 
