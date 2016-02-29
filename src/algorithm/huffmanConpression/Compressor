@@ -1,0 +1,81 @@
+package cs211.lab3.compressor;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+import cs211.lab3.Huffman;
+
+public class Compressor {
+
+	public static void main(String[] args) {
+
+		int[] frequencyTable =encodeFile("original.txt", "original.encoded");
+		decodeFile("original.encoded",frequencyTable,"plain.txt");
+
+	}
+
+	public static int[] encodeFile(String orignfilename, String outPutencodedfilename) {
+		int[] frequencyTable = null;
+		// read file ;
+		try {
+			FileReader fileReader = new FileReader(orignfilename);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+			String allContent = "";
+			String line = "";
+			while ((line = bufferedReader.readLine()) != null) {
+				allContent += line + "\n";
+
+			}
+			bufferedReader.close();
+
+			//encode and writer code
+			FileWriter fileWriter = new FileWriter(outPutencodedfilename);
+			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+			frequencyTable =Huffman.getFrequencyArray(allContent); 
+			String encoded = Huffman.encode(frequencyTable, allContent);
+			bufferedWriter.write(encoded);
+			bufferedWriter.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return frequencyTable;
+	}
+
+	public static void decodeFile(String encodedfilename, int[] frequencyTable, String outPutplainTextFilename) {
+		//read encodedfile;
+		try {
+			FileReader fileReader = new FileReader(encodedfilename);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+			String allCode = "";
+			String line = "";
+			while ((line = bufferedReader.readLine()) != null) {
+				allCode += line + "\n";
+
+			}
+			bufferedReader.close();
+			//decode
+			String content = Huffman.decode(frequencyTable, allCode);
+			
+			//write file
+			FileWriter fileWriter = new FileWriter(outPutplainTextFilename);
+			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+		
+	
+			bufferedWriter.write(content);
+			bufferedWriter.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}
