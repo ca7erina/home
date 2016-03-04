@@ -63,7 +63,7 @@ public class Scrabble {
     public static PriorityQueue<Node> getResult(String letters, String[] dic){
         PriorityQueue<Node> result= new PriorityQueue<Node>();
         for(String dicWord:dic){
-            Node word = getNode(letters,dicWord);
+            Node word = getNode(letters,dicWord.trim());//why trim?
             if (word.score>0){
                 result.add(word);
             }
