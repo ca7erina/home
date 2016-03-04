@@ -55,7 +55,8 @@ public class Scrabble {
 
 
         for(int i=0;i<topRank;i++){
-            System.out.println(result.poll().word);
+            Node temp =  result.poll();
+            System.out.println(temp.word);
         }
     }
 
@@ -117,7 +118,7 @@ public class Scrabble {
 }
 
 class Node implements Comparable<Node> {
-    public String word ;             // first node of tree
+    public String word ;
     public int score = 0;
 
 
@@ -128,12 +129,21 @@ class Node implements Comparable<Node> {
     }
 
     public int compareTo(Node object) {
-        if(score - object.score > 0) { //compare the cumulative frequencies of the tree
+        if(score - object.score > 0) { //score of the Node
             return -1;
         } else if(score - object.score < 0) {
-            return 1;   //return 1 or -1 depending on whether these frequencies are bigger or smaller
+            return 1;   //return 1 or -1 depending on whether these scores are bigger or smaller
         } else {
-            return 0;   //return 0 if they're the same
+            //the score is the same, then compare letters
+            if(word.compareTo(object.word)<0){
+                return -1;
+            }else if(word.compareTo(object.word)>0){
+                return 1;
+            }else{
+                return 0;   //return 0 if they're the same score ,same word
+            }
+
+
         }
     }
 }
