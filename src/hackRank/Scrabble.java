@@ -64,7 +64,7 @@ public class Scrabble {
         PriorityQueue<Node> result= new PriorityQueue<Node>();
         for(String dicWord:dic){
             Node word = getNode(letters,dicWord.trim());//why trim?
-            if (word.score>0){
+            if (word!=null&&word.score>0){
                 result.add(word);
             }
         }
@@ -87,7 +87,7 @@ public class Scrabble {
 
 
     public static Node getNode(String letters, String dicWord){
-        Node result = new Node();
+        Node result = null;
         String temp= dicWord;
         int score = 0;
         for(int i=0; i<letters.length();i++){
@@ -109,6 +109,7 @@ public class Scrabble {
             }
             score = score+dicWord.length();
             result.score = score;
+             return result;
         }
 
 
@@ -184,8 +185,8 @@ class Node implements Comparable<Node> {
             }
         }
         String[] array = contents.toString().split("\n");
-        for(String s: array){
-            s.trim();
+        for(int i=0;i<array.length();i++){
+           array[i] = array[i].trim();
         }
         return array;
     }
