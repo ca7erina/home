@@ -185,7 +185,7 @@ class Node implements Comparable<Node> {
             }
         }
         String[] array = contents.toString().split("\n");
-        for(int i=0;i<array.length();i++){
+        for(int i=0;i<array.length;i++){
            array[i] = array[i].trim();
         }
         return array;
