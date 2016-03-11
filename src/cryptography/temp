@@ -1,0 +1,276 @@
+package cs211.lab5;
+
+import java.io.*;
+import java.util.PriorityQueue;
+
+
+/**
+ * 
+ */
+public class Mystery {
+	static String alltext = "";
+	static int[] frequency = new int[256];
+	static int totalCharCount;
+	static int lettersAlphabetCount = 0;
+	static String targetLanguage;
+	public final static String ENCODED_FILE_NAME = "mystery.txt";
+	
+	
+	public static void main(String args[]) {
+
+		totalCharCount = setFrequencyProfile();
+		// sort letter frequncy in priority queue
+		PriorityQueue<CharFrequency> myFrequency = getMysteryFingerPrint();
+		PriorityQueue<CharFrequency> targetLanguageFrequncy = getTargetLanguage(); // get possible language frequency and put in queue
+
+		// show mystery letter frequency and closest language frequency
+		while (!myFrequency.isEmpty() && !targetLanguageFrequncy.isEmpty()) {
+			CharFrequency my = myFrequency.poll();
+			CharFrequency fi = targetLanguageFrequncy.poll();
+			System.out.println((int) my.letter + " " + my.letter + " " + my.frequency + ":" + (int) fi.letter + " "
+					+ fi.letter + " " + fi.frequency);
+		}
+
+		System.out.println("encoded file contains total character:" + lettersAlphabetCount);
+		System.out.println("encoded file txt length:" + alltext.length());
+	}
+
+	public static PriorityQueue<CharFrequency> getMysteryFingerPrint() {
+		int count = 0;
+		// get finger print;
+		PriorityQueue<CharFrequency> myFrequency = new PriorityQueue<CharFrequency>();
+		for (int i = 0; i < frequency.length; i++) {
+			if (frequency[i] > 0) {// ascii 127-160
+				count++;
+				double result = ((double) frequency[i] / totalCharCount) * 100;
+				CharFrequency charFrequency = new CharFrequency((char) i, (double) Math.round(result * 100) / 100);
+				myFrequency.add(charFrequency);
+			}
+		}
+		lettersAlphabetCount = count;
+		return myFrequency;
+
+	}
+
+	public static int setFrequencyProfile() {
+		frequency = new int[256];
+		// read file ;
+		int totalCharCount = 0;
+		FileIO loader = new FileIO();
+		String[] sentences = loader.load(ENCODED_FILE_NAME);
+
+		// set frequency array
+		for (String sentence : sentences) {
+			if (sentence.length() == 0) {
+				continue;
+			}
+			for (int j = 0; j < sentence.length(); j++) {
+				if (sentence.charAt(j)=='¡') {
+					continue;
+				}
+				int numberValue = (int) sentence.charAt(j);
+				frequency[numberValue]++;
+				totalCharCount++;
+			}
+			alltext += sentence + "\n";
+
+		}
+		return totalCharCount;
+	}
+
+
+
+	public static PriorityQueue<CharFrequency> getTargetLanguage() {
+		String languages[] = { "finnish", "spanish", "french", "english", "german", "russian", "swedish", "polish",
+				"icelandic", "danish" };
+		PriorityQueue<LanguageFrequency> languageQ = new PriorityQueue<LanguageFrequency>();
+		double diff;
+		PriorityQueue<CharFrequency> result = null;
+			for (int i=0;i<languages.length;i++) {
+				PriorityQueue<CharFrequency> pq = getFingerPrint(languages[i]);
+				diff = getDifference(getMysteryFingerPrint(), pq);
+				LanguageFrequency lf = new LanguageFrequency(languages[i], diff);
+				languageQ.add(lf);
+			}
+
+			System.out.println("--> " + languageQ.peek().language);
+			targetLanguage = languageQ.peek().language;
+			result = getFingerPrint(targetLanguage);
+			
+			//print all language
+			while(!languageQ.isEmpty()){
+				LanguageFrequency lf = languageQ.poll();
+				System.out.println(lf.language+" diff: "+lf.diff);
+			}
+
+		return result;
+	}
+
+	public static double getDifference(PriorityQueue<CharFrequency> mystrery, PriorityQueue<CharFrequency> aLanguage) {
+
+		double result = 0.0;
+		while (!mystrery.isEmpty() ) {
+			CharFrequency m = mystrery.poll();
+			if(aLanguage.isEmpty()){
+				result +=m.frequency;
+			}else{
+				CharFrequency o = aLanguage.poll();
+				//double number = Math.pow(m.frequency, 2.0) - Math.pow(o.frequency, 2.0);
+				result +=Math.abs(m.frequency-o.frequency)/2;
+			}
+
+		
+		}
+		
+	
+	
+		 
+		return result;
+	}
+
+	public static PriorityQueue<CharFrequency> getFingerPrint(String filename) {
+
+		PriorityQueue<CharFrequency> PQ = new PriorityQueue<CharFrequency>();
+		FileReader fileReader;
+		BufferedReader bufferedReader = null;
+
+
+		// read file ;
+		try {
+			fileReader = new FileReader(filename);
+			bufferedReader = new BufferedReader(fileReader);
+			String line;
+
+			while ((line = bufferedReader.readLine()) != null) {
+				String result[] = line.trim().split(" ");
+				double frequency = Double.parseDouble(result[1].trim());
+				CharFrequency charFrequency = new CharFrequency(result[0].charAt(0), frequency);
+				PQ.add(charFrequency);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (bufferedReader != null) {
+					bufferedReader.close();
+
+				}
+
+			} catch (IOException ex) {
+				System.out.println("Input output exception while processing file");
+				ex.printStackTrace();
+			}
+		}
+		return PQ;
+	}
+	
+	
+	
+}
+
+class CharFrequency implements Comparable<CharFrequency> {
+		char letter;
+		double frequency;
+
+		public CharFrequency(char letter, double frequency) {
+			this.letter = letter;
+			this.frequency = frequency;
+		}
+
+		public int compareTo(CharFrequency o) {
+
+			if (this.frequency - o.frequency > 0) { // compare the cumulative
+													// frequencies
+				return -1;
+			} else if (this.frequency - o.frequency < 0) {
+				return 1; // return 1 or -1 depending on whether these
+							// frequencies are bigger or smaller
+			} else {
+				return 0; // return 0 if they're the same
+			}
+
+		}
+
+	}
+
+class LanguageFrequency implements Comparable<LanguageFrequency> {
+	String language;
+	double diff;
+
+	public LanguageFrequency(String language, double diff) {
+		this.language = language;
+		this.diff = diff;
+	}
+
+	public int compareTo(LanguageFrequency o) {
+
+		if (this.diff - o.diff < 0) { // compare the cumulative
+												// frequencies
+			return -1;
+		} else if (this.diff - o.diff > 0) {
+			return 1; // return 1 or -1 depending on whether these
+						// frequencies are bigger or smaller
+		} else {
+			return 0; // return 0 if they're the same
+		}
+
+	}
+
+}
+
+
+class FileIO {
+
+    public String[] load(String file) {
+        File aFile = new File(file);
+        StringBuilder contents = new StringBuilder();
+        BufferedReader input = null;
+        try {
+            input = new BufferedReader(new FileReader(aFile));
+            String line ;
+            int i = 0;
+            while((line = input.readLine()) != null) {
+                contents.append(line);
+                i=i+1;
+                contents.append(System.getProperty("line.separator"));
+            }
+        } catch(FileNotFoundException ex) {
+            System.out.println("Can't find the file - are you sure the file is in this location: " + file);
+            ex.printStackTrace();
+        } catch(IOException ex) {
+            System.out.println("Input output exception while processing file");
+            ex.printStackTrace();
+        } finally {
+            try {
+                if(input != null) {
+                    input.close();
+                }
+            } catch(IOException ex) {
+                System.out.println("Input output exception while processing file");
+                ex.printStackTrace();
+            }
+        }
+        String[] array = contents.toString().split("\n");
+        for(int i = 0; i < array.length; i++) {
+            array[i] = array[i].trim();
+        }
+        return array;
+    }
+
+    public void save(String file, String[] array) throws IOException {
+        File aFile = new File(file);
+        Writer output = null;
+        try {
+            output = new BufferedWriter(new FileWriter(aFile));
+
+             for(String s:array){
+                output.write(s);
+                output.write(System.getProperty("line.separator"));
+            }
+        } finally {
+            if(output != null) output.close();
+        }
+    }
+
+}
