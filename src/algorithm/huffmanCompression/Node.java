@@ -1,4 +1,4 @@
-package algorithm.huffmanConpression;
+package algorithm.huffmanCompression;
 
 /**
  *

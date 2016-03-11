@@ -1,10 +1,8 @@
-package algorithm.huffmanConpression;
+package algorithm.huffmanCompression;
 
 /**
  * Created by chenxiaoxue on 2/23/16.
  */
-import java.io.*;
-import java.util.*;               // for Stack class
 
 ////////////////////////////////////////////////////////////////
 public class Tree implements Comparable<Tree>

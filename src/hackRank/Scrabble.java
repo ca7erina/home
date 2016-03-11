@@ -31,6 +31,7 @@ import java.util.Scanner;
  *
  */
 public class Scrabble {
+    public static final String  DIC_PATH = "src"+File.separator+"hackRank"+File.separator+"dictionary";
 
     static final String[][] scoringList = new String[][] { { "A", "1" },
             { "B", "3" }, { "C", "3" }, { "D", "2" }, { "E", "1" },
@@ -49,15 +50,19 @@ public class Scrabble {
         int topRank = 10;
         System.out.println("Here are the top "+topRank+" suggestions:");
         FileIO reader = new FileIO();
-        String[] dic = reader.load("dictionary.txt");
+        String[] dic = reader.load(DIC_PATH);
 
         PriorityQueue<Node> result= getResult(letters,dic);
 
-
-        for(int i=0;i<topRank;i++){
-            Node temp =  result.poll();
-            System.out.println(temp.word);
+        if(result.size()>=10){
+            for(int i=0;i<topRank;i++){
+                Node temp =  result.poll();
+                System.out.println(temp.word);
+            }
+        }else{
+            System.out.println("Not enough result.");
         }
+
     }
 
     public static PriorityQueue<Node> getResult(String letters, String[] dic){

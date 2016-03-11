@@ -1,19 +1,17 @@
-package algorithm.huffmanConpression;
+package algorithm.huffmanCompression;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
+import java.io.*;
 
 
 public class Compressor {
+	public static final String  FOLDER_PATH = "src"+ File.separator+"algorithm"+File.separator+"huffmanCompression"+File.separator;
+
+	public final static String ORIGIN_FILE_NAME = "original";
 
 	public static void main(String[] args) {
 
-		int[] frequencyTable =encodeFile("original.txt", "original.encoded");
-		decodeFile("original.encoded",frequencyTable,"plain.txt");
+		int[] frequencyTable =encodeFile(ORIGIN_FILE_NAME, ORIGIN_FILE_NAME+".encoded");
+		decodeFile(ORIGIN_FILE_NAME+".encoded",frequencyTable,ORIGIN_FILE_NAME+".plain");
 
 	}
 
@@ -25,7 +23,7 @@ public class Compressor {
 		BufferedWriter bufferedWriter = null;
 		// read file ;
 		try {
-			fileReader = new FileReader(orignfilename);
+			fileReader = new FileReader(FOLDER_PATH+orignfilename);
 			bufferedReader = new BufferedReader(fileReader);
 
 			String allContent = "";
@@ -37,7 +35,7 @@ public class Compressor {
 
 
 			//encode and writer code
-			fileWriter = new FileWriter(outPutencodedfilename);
+			fileWriter = new FileWriter(FOLDER_PATH+outPutencodedfilename);
 			bufferedWriter = new BufferedWriter(fileWriter);
 			frequencyTable =Huffman.getFrequencyArray(allContent); 
 			String encoded = Huffman.encode(frequencyTable, allContent);
@@ -74,7 +72,7 @@ public class Compressor {
 		FileWriter fileWriter = null;
 		BufferedWriter bufferedWriter = null;
 		try {
-			fileReader = new FileReader(encodedfilename);
+			fileReader = new FileReader(FOLDER_PATH+encodedfilename);
 			bufferedReader = new BufferedReader(fileReader);
 
 			String allCode = "";
@@ -88,7 +86,7 @@ public class Compressor {
 			String content = Huffman.decode(frequencyTable, allCode);
 			
 			//write file
-			fileWriter = new FileWriter(outPutplainTextFilename);
+			fileWriter = new FileWriter(FOLDER_PATH+outPutplainTextFilename);
 			bufferedWriter = new BufferedWriter(fileWriter);
 		
 	

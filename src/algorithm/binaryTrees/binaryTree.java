@@ -40,6 +40,8 @@ public class binaryTree {
         System.out.println(minimum(root56).data);
         delete(26,root56);
         inOrder(root56);
+        System.out.println();
+        inOrder(n26);
     }
 
     public static Node find(int key,Node root){
