@@ -1,23 +1,25 @@
 package cryptography.AliceBob;
 
+
 /**
  * Alice public key(generater, primeNumber,g^x mod p);
  * x = private key  [0,p]
  *
  * Bob encryption:(g^y mod p, (m* g^y )mod p)
  *
- * Alice receive: (g^y, m*g^y)=(c1,c2)
- * m = c2/c1 = (1/c1 *c2) mod p
- * m = c1 ^(p-1-x) mod P
+ * Alice receive: (g^y, m*g^xy)=(c1,c2)
+ * m = c2/c1^x
+ * 1/c1^x =c1^(p-1-x)
+ * m = c1 ^(p-1-x) *c2 mod P
  *
  */
 public class Solution {
     static int privateKey[] = new int[100];
 
     public static void main(String[] args) {
-        //Alice’s public key is (24852977, 2744, 8414508).
+        //Alice’s public key is (24852977, 2744, 8414508). //g,p,g^x %p
         //Bob send her the cipher (15268076, 743675)
-        // what is the private key x?
+       
         long p = 24852977l;
         long g = 2744l;
         long publicNum = 8414508l;
@@ -25,11 +27,11 @@ public class Solution {
 
         long c1 = 15268076l;
         long c2 = 743675l;
-
-        getPrivate(p, g, publicNum);
+        // what is the private key x?
+        getPrivate(p, g, publicNum); //g^x % p
         for(int i : privateKey) {
-            if(privateKey[i] > 0) {
-                System.out.println("msg: " + getMessage(c1, c2, p, privateKey[i]));
+            if(i> 0) {
+                System.out.println("msg: " + getMessage(c1, c2, p, i));
             }
 
         }
@@ -67,7 +69,7 @@ public class Solution {
      * @param number  the base
      * @param power   the power number
      * @param modulus the modulus number
-     * @return return the result of number^power mod modulus
+     * @return return the result of (number^power )% modulus
      */
     public static long modPow(long number, long power, long modulus) {
         if(power == 0)
