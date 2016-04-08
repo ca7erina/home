@@ -32,7 +32,7 @@ public class Hashing {
                 fillDoubleHash();
                 break;
         }
-        System.out.println("Load Factor:" + (double) (216555.0 / size));
+        System.out.println("Load Factor:" + (double)(216555.0 / size));
         in.nextLine();
         System.out.print("\nEnter a word to find: ");//the user is asked to enter words to search for until they enter the word 'quit'
         String word = in.nextLine();
@@ -103,9 +103,6 @@ public class Hashing {
         long uniqueNumber = 0l;
         int power = 0;
         for(char c : word.trim().toCharArray()) {
-            if(power > word.length()) {
-                System.err.println("error -------------------------------------------------------------------------");
-            }
             uniqueNumber += (c - 96) * modPow(27, power, slot) * (c) ^ power;
             power++;
         }
