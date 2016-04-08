@@ -1,81 +1,56 @@
-package cs211.lab7;
+package hash;
 
 
 import java.io.*;
+import java.util.*;
 
-public class Hashing2 {
-    static int size = 433099;//this is the size of the hash table - a prime number is best
+/**
+ * test the best hashing way.
+ */
+public class HashingTester1 {
+	//this is the size of the hash table - a prime number is best
+    static int size = 432479; //432161 432587
     static String[] hashTable = new String[size];//create the hash table
     static String[] array = new String[216555]; //make sure your String array is big enough to hold all the data
 
 
 
     public static void main(String[] args) throws IOException {
-    	  File testFile = new File( "dictionary.txt");     //this is where the file to be sorted is loaded from. enter the location where you have saved the file of words
-    	  getContents(testFile);
-    	  int min3=Integer.MAX_VALUE;
-    	int min2=Integer.MAX_VALUE;
-    	int min1=Integer.MAX_VALUE;
-    	int index=0;
-        for(int i = 433109;i>300000;i--){
-        	size =i;
-        	int c1=0;
-        	int c2=0;
-        	int c3=0;
-        	
-        	if(isPrime(i)){
-        		System.out.print((index++)+" ");
-        		   
-        	        
-        	         c1= fillLinearProbing();
-        	         
-        	        
-        	       
-//        	         c2= fillQuadraticProbing();
-//        	
-//        	         c3= fillDoubleHash();
-//        	         
-        	         
-        	         if(c1<min1){
-         	        	 min1 = c1; 
-         	        	System.out.println("size: "+ size+" linner coll:"+c1);
-//       	        	 System.out.println("size: "+ size+" Quadratic coll:"+c2);
-//       	        	 System.out.println("size: "+ size+" Doublehash coll:"+c3);
-         	         }
-        	         
-        	         
-        	         
-        	         
-        	         if((c1<90000)&&(c2<90000)&&(c3<90000)){
-        	        	 System.out.println("----------------------------------------------");
-        	        	 System.out.println("size: "+ size+" linner coll:"+c1);
-        	        	 System.out.println("size: "+ size+" Quadratic coll:"+c2);
-        	        	 System.out.println("size: "+ size+" Doublehash coll:"+c3);
-        	        	 
-        	         }
-        	         
-//        	         System.out.println("size: "+ size+" linner coll:"+c1+" Quadratic coll:"+c2+" Doublehash coll:"+c3);
-        	         
-        	}
-        	
-        }
-         
-        
-   
-    }
-    
-    public static boolean isPrime(int num){
-    	boolean isPrime = true;
-    	for(int i=2;i<num;i++){
-    		if(num%i==0){
-    			isPrime = false;
-    			break;
-    		}
-    	}
-    	return isPrime;
+        int minP =0;
+        int min1=Integer.MAX_VALUE;
+        int clli =0;
+
+        File testFile = new File("src" + File.separator + "hash" + File.separator + "dictionary.txt");     //this is where the file to be sorted is loaded from. enter the location where you have saved the file of words
+
+        getContents(testFile);
+
+//        for(int i=3;i<100;i++){ //8 693
+//            if(true){
+//                clli= fillLinearProbing(i);
+////                System.out.println("hash prime:"+i+" collisions:"+clli);
+//                if(clli<min1){
+//                    min1 = clli;
+//                    minP =i;
+//                    System.out.println("hash prime:"+i+" collisions:"+clli);
+//                }
+//            }
+//        }
+        fillLinearProbing(3);
+
+        System.out.println("min prime:"+minP+" collisions:"+min1);
+
     }
 
-  
+    public static boolean isPrime(int num){
+        boolean isPrime = true;
+        for(int i=2;i<num;i++){
+            if(num%i==0){
+                isPrime = false;
+                break;
+            }
+        }
+        return isPrime;
+    }
 
     /**
      * this is the primary hash key function - it should return a number which is a slot in the hash table
@@ -87,13 +62,10 @@ public class Hashing2 {
      * @param word
      * @return
      */
-    public static int getHashKey(String word) {
-       long uniqueNumber = uniqueNumber(word);
-        long result =  (uniqueNumber%size);
-        return (int)result;
-
+    public static int getHashKey(String word,int p) {
+        long uniqueIndex=getUniqueNumber(word,p);
+        return (int )uniqueIndex;
     }
-
 
 
     /**
@@ -102,122 +74,64 @@ public class Hashing2 {
      * @param word
      * @return
      */
-    public static long uniqueNumber(String word){
-        int slot = size;
-        long uniqueNumber=0l;
-        int power=0;
-        for(char c:word.trim().toCharArray()){
-            if(power>word.length()){
-                System.err.println("error -------------------------------------------------------------------------");
-            }
-            uniqueNumber+=(c-96)*modPow(27,power,slot)*(c)^power;
-            power++;
-        }
-        //System.out.println("uniqueNumber for the word "+ uniqueNumber);
+    public static int getUniqueNumber(String word,int p){
+       int hashcode = word.hashCode();
 
-        return uniqueNumber;
+        int hash = hash(hashcode);
+        return indexFor(hash,(int)(size*0.75));
+    }
+
+    public static int hash(int h){
+        h ^= (h >>> 20) ^ (h >>> 12);
+        return h ^ (h >>> 7) ^ (h >>> 4);
+
+    }
+
+    public static int indexFor(int h, int length) {
+               return h & (length-1);
     }
 
 
 
 
 
-    /**
-     * this method should be different to the primary hash function
-     * it should return a different number for words which generated the same primary hash key value
-     * for example, you could just add up all of the letters in the word
-     *
-     * @param word
-     * @return
-     */
-    public static int getDoubleHashKey(String word) {
-        int max = 61;
-        long uniquenumber =uniqueNumber(word);
-        int secondHash = (int)(max-(uniquenumber%max));
-
-        return secondHash;
-    }
 
 
-    public static int fillLinearProbing() {
+
+    public static int fillLinearProbing(int p) {
         int totalcollisions = 0;
         //this variable stores the total number of collisions that have occurred for every word
         for(int i = 0; i < array.length; i++) {
             //go through all words
             int collisions = 0;
-            int index = getHashKey(array[i]);
+            int index = getHashKey(array[i], p);
             //generate a hash key
+            int index2=0;
             while(hashTable[index] != null) {
             //if that slot is already filled move onto the next slot and increment the collisions
+//                if(index2==0){
+//                    System.out.println("index:"+index+ " "+ array[i] +" "+hashTable[index]);
+//                }
+                index2++;
                 collisions++;
                 index++;
                 index = index % size;
             //make sure you don't go off the edge of the hash table
             }
             hashTable[index] = array[i];
-//            if(i % 100 == 0) {
-//                System.out.println(array[i] + " was placed in slot " + index + " of the hash table after " + collisions + " collisions");
-//            }
+            if(i % 100 == 0) {
+                System.out.println(array[i] + " was placed in slot " + index + " of the hash table after " + collisions + " collisions");
+            }
             totalcollisions += collisions;
             //print out the information for the last 1,000 words only, otherwise it takes quite long and gets annoying
         }
-      //  System.out.println("The total number of collisions was " + totalcollisions);
+//        System.out.println("The total number of collisions was " + totalcollisions);
         hashTable = new String[size];//create the hash table
-   
+
         return totalcollisions;
     }
 
-    public static int fillQuadraticProbing() {
-        int totalcollisions = 0;
-        for(int i = 0; i < array.length; i++) {
-            int collisions = 0;
-            int index = getHashKey(array[i]);
-            int queries = 1;
-            while(hashTable[index] != null) {
-                collisions++;
-                index = index + (queries * queries);
-                index = index % size;
-                if(queries>46000){
-                	System.out.println(queries+" "+size+" "+index);
-                	
-                }
-                queries++;
-            }
-            hashTable[index] = array[i];
-//            if(i % 100 == 0) {
-//                System.out.println(array[i] + " was placed in slot " + index + " of the hash table after " + collisions + " collisions");
-//            }
-            totalcollisions += collisions;
-        }
-     
-        //System.out.println("The total number of collisions was " + totalcollisions);
-        hashTable = new String[size];//create the hash table
-   
-         return totalcollisions;
-    }
 
-    public static int fillDoubleHash() {
-        int totalcollisions = 0;
-        for(int i = 0; i < array.length; i++) {
-            int collisions = 0;
-            int index = getHashKey(array[i]);
-            int doubleHash = getDoubleHashKey(array[i]);
-            while(hashTable[index] != null) {
-                collisions++;
-                index = index + doubleHash;
-                index = index % size;
-            }
-            hashTable[index] = array[i];
-//            if(i % 100 == 0) {
-//                System.out.println(array[i] + " was placed in slot " + index + " of the hash table after " + collisions + " collisions");
-//            }
-            totalcollisions += collisions;
-        }
-//        System.out.println("The total number of collisions was " + totalcollisions);
-        hashTable = new String[size];//create the hash table
-  
-         return totalcollisions;
-    }
 
     /**
      * raises a number to a power with the given modulus

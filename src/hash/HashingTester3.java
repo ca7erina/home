@@ -1,12 +1,15 @@
-package cs211.lab7;
+package hash;
 
 
 import java.io.*;
 import java.util.*;
 
-public class Hashing3 {
+/**
+ * test double hash ; figure out the best step
+ */
+public class HashingTester3 {
 	//this is the size of the hash table - a prime number is best
-    static int size = 433099; //432161 432587
+    static int size = 432479; //432161 432587
     static String[] hashTable = new String[size];//create the hash table
     static String[] array = new String[216555]; //make sure your String array is big enough to hold all the data
 
@@ -19,8 +22,8 @@ public class Hashing3 {
     		
     		int c3=0;
     		if(isPrime(i)){
-    			System.out.print(i+" ");
-    			  File testFile = new File( "dictionary.txt");     //this is where the file to be sorted is loaded from. enter the location where you have saved the file of words
+
+    			  File testFile = new File( "src" + File.separator + "hash" + File.separator + "dictionary.txt");     //this is where the file to be sorted is loaded from. enter the location where you have saved the file of words
      	         getContents(testFile);
      	         c3= fillDoubleHash(i); //i is prime number for the step
      	         if(c3<mincolli){
@@ -32,7 +35,7 @@ public class Hashing3 {
      	       
     		}
     	}
-    	 System.out.println("step: " + beststep+" coll: "+mincolli);
+    	 System.out.println(" min step: " + beststep+" coll: "+mincolli);
     }
     public static boolean isPrime(int num){
     	boolean isPrime = true;
@@ -45,7 +48,7 @@ public class Hashing3 {
     	return isPrime;
     }
 
-    
+
 
     /**
      * this is the primary hash key function - it should return a number which is a slot in the hash table
@@ -58,9 +61,8 @@ public class Hashing3 {
      * @return
      */
     public static int getHashKey(String word) {
-       long uniqueNumber = uniqueNumber(word);
-        int result = (int) (uniqueNumber%size);
-        return result;
+        long uniqueIndex=getUniqueNumber(word);
+       return (int) ((uniqueIndex)%size);
 
     }
 
@@ -72,21 +74,23 @@ public class Hashing3 {
      * @param word
      * @return
      */
-    public static long uniqueNumber(String word){
-        int slot = size;
-        long uniqueNumber=0l;
-        int power=0;
+    public static long getUniqueNumber(String word){
+        long uniqueIndex=0l;
+        int sum=0;
+        int power=1;
         for(char c:word.trim().toCharArray()){
-            if(power>word.length()){
-                System.err.println("error -------------------------------------------------------------------------");
+            while(!isPrime(power)){ //only use prime power and 1;
+                power++;
             }
-            uniqueNumber+=(c-96)*modPow(27,power,slot)*(c)^power;//61 step: 61 coll: 84241
-//            uniqueNumber+=(c-96)*modPow(27,power,slot)+(c-96)^power;////step: 31 coll: 89489
+            uniqueIndex+=(c)*modPow(65,power,size);
             power++;
+            sum+=c;
         }
         //System.out.println("uniqueNumber for the word "+ uniqueNumber);
 
-        return uniqueNumber;
+        return (int) (uniqueIndex+sum);//min prime:37 collisions:106820
+///min prime:65 collisions:106263
+        //hash prime:9 collisions:106445
     }
 
 
@@ -101,10 +105,10 @@ public class Hashing3 {
      * @param word
      * @return
      */
-    public static int getDoubleHashKey(String word,int step) {
-        int max = step;
-        long uniquenumber =uniqueNumber(word);
-        int secondHash = (int)(max-(uniquenumber%max));
+    public static int getDoubleHashKey(String word,int max) {//step: 61 coll: 83337 size:432479
+
+        long hashindex =getUniqueNumber(word);
+        int secondHash = (int)(max-(hashindex%max));
 
         return secondHash;
     }
