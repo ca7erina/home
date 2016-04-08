@@ -5,19 +5,16 @@ import java.io.*;
 import java.util.*;
 
 public class Hashing {
-    static int size = 433109;//this is the size of the hash table - a prime number is best
+    static int size = 432479;//this is the size of the hash table - a prime number is best
     static String[] hashTable = new String[size];//create the hash table
     static String[] array = new String[216555]; //make sure your String array is big enough to hold all the data
 
 
-
     public static void main(String[] args) throws IOException {
         File testFile = new File("src" + File.separator + "hash" + File.separator + "dictionary.txt");     //this is where the file to be sorted is loaded from. enter the location where you have saved the file of words
-
         //fill the hash table so that every slot contains a space
         //loads up the file
         getContents(testFile);
-
         System.out.println("Which type of open addressing would you like to use?");
         System.out.println("1) Linear Probing");
         System.out.println("2) Quadratic Probing");
@@ -35,10 +32,9 @@ public class Hashing {
                 fillDoubleHash();
                 break;
         }
+        System.out.println("Load Factor:" + (double) (216555.0 / size));
         in.nextLine();
-
-        //the user is asked to enter words to search for until they enter the word 'quit'
-        System.out.print("\nEnter a word to find: ");
+        System.out.print("\nEnter a word to find: ");//the user is asked to enter words to search for until they enter the word 'quit'
         String word = in.nextLine();
         while(!word.equals("quit")) {
             find(word, strategy);
@@ -48,21 +44,19 @@ public class Hashing {
         }
     }
 
+    /**
+     *  this method takes in a word to look for and the strategy by which it has been placed in the hash table
+     */
     public static void find(String word, int strategy) {
-//this method takes in a word to look for and the strategy by which it has been placed in the hash table
         int probes = 1;
-        int index = getHashKey(word);
-//calculate the hash key for the word
+        int index = getHashKey(word);//calculate the hash key for the word
         System.out.println();
-        while(hashTable[index] != null && !hashTable[index].equals(word)) {
+        while(hashTable[index] != null && !hashTable[index].equals(word)) {//as long as you do not stumble across either the word or a blank keep searching
             System.out.println("Checking slot " + index + "...collision with " + hashTable[index]);
-//as long as you do not stumble across either the word or a blank keep searching
-            if(strategy == 1) {
-//depending on the strategy go up in linear jumps, quadratic jumps or the double hash jump
+            if(strategy == 1) {//depending on the strategy go up in linear jumps, quadratic jumps or the double hash jump
                 index++;
                 probes++;
-                index = index % size;
-//always mod the index size so it doesn't go out of bounds
+                index = index % size;//always mod the index size so it doesn't go out of bounds
             } else if(strategy == 2) {
                 index = index + (probes * probes);
                 probes++;
@@ -74,13 +68,11 @@ public class Hashing {
             }
         }
         if(hashTable[index] == null) {
-            System.out.println("NOT IN HASHTABLE");
-//if you've found a space then the word cannot be in the hash table
+            System.out.println("NOT IN HASHTABLE");//if you've found a space then the word cannot be in the hash table
         } else {
             System.out.println("The word " + word + " was found in slot " + index + " of the hashtable");
         }
-        System.out.println("Number of hash table probes: " + probes);
-//print out the total number of attempts to find the correct slot
+        System.out.println("Number of hash table probes: " + probes);//print out the total number of attempts to find the correct slot
     }
 
     /**
@@ -94,12 +86,10 @@ public class Hashing {
      * @return
      */
     public static int getHashKey(String word) {
-       long uniqueNumber = uniqueNumber(word);
-        int result = (int) (uniqueNumber%size);
+        long uniqueNumber = getUniqueNumber(word);
+        int result = (int) (uniqueNumber % size);
         return result;
-
     }
-
 
 
     /**
@@ -108,24 +98,19 @@ public class Hashing {
      * @param word
      * @return
      */
-    public static long uniqueNumber(String word){
+    public static long getUniqueNumber(String word) {
         int slot = size;
-        long uniqueNumber=0l;
-        int power=0;
-        for(char c:word.trim().toCharArray()){
-            if(power>word.length()){
+        long uniqueNumber = 0l;
+        int power = 0;
+        for(char c : word.trim().toCharArray()) {
+            if(power > word.length()) {
                 System.err.println("error -------------------------------------------------------------------------");
             }
-            uniqueNumber+=(c-96)*modPow(27,power,slot)+(c-5)^power;
+            uniqueNumber += (c - 96) * modPow(27, power, slot) * (c) ^ power;
             power++;
         }
-        //System.out.println("uniqueNumber for the word "+ uniqueNumber);
-
         return uniqueNumber;
     }
-
-
-
 
 
     /**
@@ -137,10 +122,9 @@ public class Hashing {
      * @return
      */
     public static int getDoubleHashKey(String word) {
-        int max = 31;
-        long uniquenumber =uniqueNumber(word);
-        int secondHash = (int)(max-(uniquenumber%max));
-
+        int max = 101;
+        long uniquenumber = getUniqueNumber(word);
+        int secondHash = (int) (max - (uniquenumber % max));
         return secondHash;
     }
 
@@ -154,11 +138,11 @@ public class Hashing {
             int index = getHashKey(array[i]);
             //generate a hash key
             while(hashTable[index] != null) {
-            //if that slot is already filled move onto the next slot and increment the collisions
+                //if that slot is already filled move onto the next slot and increment the collisions
                 collisions++;
                 index++;
                 index = index % size;
-            //make sure you don't go off the edge of the hash table
+                //make sure you don't go off the edge of the hash table
             }
             hashTable[index] = array[i];
             if(i % 100 == 0) {
@@ -217,7 +201,7 @@ public class Hashing {
      * you need to multiply numbers in such a way that the result is consistently moduloed to keep it in the range
      * however you want the algorithm to work quickly - having a multiplication loop would result in an O(n) algorithm!
      * the trick is to use recursion - keep breaking the problem down into smaller pieces and use the modMult method to join them back together
-     *
+     * <p/>
      * example 7^29 mod 11
      * modPow(7,29,11) = 8
      *
@@ -246,6 +230,7 @@ public class Hashing {
      * you need to multiply numbers in such a way that the result is consistently moduloed to keep it in the range
      * however you want the algorithm to work quickly - having an addition loop would result in an O(n) algorithm!
      * the trick is to use recursion - keep breaking down the multiplication into smaller pieces and mod each of the pieces individually
+     *
      * @param first
      * @param second
      * @param modulus
