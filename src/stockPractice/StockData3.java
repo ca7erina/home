@@ -11,7 +11,7 @@ import java.io.*;
  *
  *
  */
-public class StockData2 {
+public class StockData {
 
     static String[] companyIndex;
     static String[] dateIndex;
