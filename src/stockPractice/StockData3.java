@@ -11,7 +11,7 @@ import java.io.*;
  *
  *
  */
-public class StockData {
+public class StockData2 {
 
     static String[] companyIndex;
     static String[] dateIndex;
@@ -54,13 +54,10 @@ public class StockData {
     	if( peak ==0.0){
     		  drawdown = (peak -trough);
     	}else{
-    		  drawdown = 100*(peak -trough)/peak;// calculate troughdown
+    		  drawdown =(peak -trough)/peak;// calculate troughdown
     	}
     	
-        if(drawdown==26195.498264320246){
-        	System.out.println(peak);
-        	System.out.println(trough);
-        }
+    	
         return drawdown;
     }
 
@@ -133,32 +130,23 @@ public class StockData {
       System.out.println("peak date "+dateIndex[(int)highestDDList[465][1]] );
       System.out.println("trough date "+dateIndex[(int)highestDDList[465][2]]);
       System.out.println("highest drawdown:"+ highestDDList[465][3]);
+      System.out.println();
       
-      
-
-
 
         // print result top 5
-//        for(int i=1;i<highestDDList.length;i++){
-//        	
-//        		 System.out.println("company name: "+companyIndex[(int)highestDDList[i][0]]);
-//                 System.out.println("peak date "+dateIndex[(int)highestDDList[i][1]] );
-//                 System.out.println("trough date "+dateIndex[(int)highestDDList[i][2]]);
-//                 System.out.println("highest drawdown:"+ highestDDList[i][3]);	
-//                 break;
-//        	
-//           
-//        }
-//        
-        
-        
-        
+        for(int i=1;i<5;i++){
+        	
+        		 System.out.println("company name: "+companyIndex[(int)highestDDList[i][0]]);
+                 System.out.println("peak date "+dateIndex[(int)highestDDList[i][1]] );
+                 System.out.println("trough date "+dateIndex[(int)highestDDList[i][2]]);
+                 System.out.println("highest drawdown:"+ highestDDList[i][3]);	
+    
+        	
+           
+        }
 
     }
-
-
-
-    
+   
 
 }
 
