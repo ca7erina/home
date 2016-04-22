@@ -25,7 +25,7 @@ public class RollDice {
         System.out.println("roll dice "+base+" times, average how many rolls to get six is: " + Math.round((double)sum/base)); //avg
 
         //get snapchat and get 6
-        base =100000;// how many times you do this test
+        base =1000000;// how many times you do this test
         sum=0; // for calculate avg.
         int temp = TimesOfrollAndGetSanpChat();
         for(int i=0;i<base;i++) {
@@ -54,10 +54,10 @@ public class RollDice {
 
 
        //get snapchat and sneeze and get 6
-        base =100000; //how many times you do this test
+        base =1000000; //how many times you do this test
         sum=0; // for calculate avg.
          temp = TimesOfrollAndGetSanpChatAndGetSneez();
-         System.out.println(temp);
+         
          for(int i=0;i<base;i++) {
              int got6Times = 0;
              while(true) {
