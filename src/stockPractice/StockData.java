@@ -45,12 +45,13 @@ public class StockData {
         for(int i=1;i<numrows;i++){
             dateIndex[i] = original[i].split("\t")[0];
         }
-        highestDrawdown(array);
+//        highestDrawdown(array);
     }
+
 
     public static double getDrawdownValue(double peak, double trough){
         double drawdown;
-        drawdown =100*(peak -trough)/peak;// wiki calculate troughdown
+        drawdown =100*(peak -trough)/peak;// wiki calculate drawdown
         return drawdown;
     }
 
@@ -65,7 +66,7 @@ public class StockData {
         int compIndex = 0;
         double highestDDList[][]=new double[466][6]; // store every company's highest drwadown: every company index, peakdate; troughdate; drawdown value;
         for(int i =1;i<=array[0].length-1;i++){ // i is company index from array data
-            double priceToday=1; //e.g. 1126 is the initial price of aig;  dont have each stock price of the initial day?
+            double priceToday=1; //dont have each stock price of the initial day? but ratio is correct
             double peak = array[array.length-1][i];
             double trough=array[array.length-1][i];
             int peakDateIndex =1;
@@ -99,7 +100,6 @@ public class StockData {
         }
 //                print2DArray(highestDDList);
         sort2DArray(highestDDList);
-
         System.out.println("highest drawdown:");
         System.out.println("company name: "+companyIndex[(int)highestDDList[0][0]]);
         System.out.println("peak date "+dateIndex[(int)highestDDList[0][1]] );
@@ -134,17 +134,14 @@ public class StockData {
                 }
             }
         }
-
     }
-
-
 }
 
 
 
 
 
-class FileIO2{
+class FileIO3{
 
     public String[] load(String file) {
         File aFile = new File(file);

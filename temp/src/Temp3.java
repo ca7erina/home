@@ -1,22 +1,34 @@
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Created by chenxiaoxue on 12/8/15.
  */
 public class Temp3 {
-
+    static ArrayList<Integer> list = new ArrayList<Integer>();
 
     public static void main(String args[]){
-        long dec = 0;
-        dec += Math.pow(2,3)*(Integer.parseInt("234".substring(0,1)));
-        System.out.println(method(17));
-
-    }
-
-    public static int method(int number){
-        if (number == 2){
-            return 7;
+        for(int i = 400000;i>300000;i--){
+            if(isPrime(i)){
+                list.add(i);
+            }
         }
-        return method((number % 5) + 1) + 2;
+
+        for(int i=0;i<list.size();i++){
+           System.out.println(list.get(i));
+        }
+        System.out.println(list.size());
     }
+    public static boolean isPrime(int num){
+        boolean isPrime = true;
+        for(int i=2;i<num;i++){
+            if(num%i==0){
+                isPrime = false;
+                break;
+            }
+        }
+        return isPrime;
+    }
+
 }

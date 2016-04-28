@@ -1,5 +1,7 @@
 package hash;
 
+import algorithm.linkedList.DoubleEndedDoubleLinkedList;
+
 import java.util.ArrayList;
 
 /**
@@ -9,26 +11,12 @@ public class Temp5 {
     static ArrayList<Integer> list = new ArrayList<Integer>();
 
     public static void main(String args[]){
-        for(int i = 400000;i>300000;i--){
-            if(isPrime(i)){
-                list.add(i);
-            }
-        }
 
-        for(int i=0;i<list.size();i++){
-           System.out.println(list.get(i));
-        }
-        System.out.println(list.size());
+               double number = -1.762523623723;
+                    System.out.println("drawdown:"+ number);
+                    System.out.println("min:"+ Double.MIN_VALUE);
+                    System.out.println(number>Double.MIN_VALUE);
     }
-    public static boolean isPrime(int num){
-        boolean isPrime = true;
-        for(int i=2;i<num;i++){
-            if(num%i==0){
-                isPrime = false;
-                break;
-            }
-        }
-        return isPrime;
-    }
+
 
 }

@@ -1,7 +1,7 @@
 package hash;
 
 import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class HashingAnswer {
     static int size = 432479;//this is the size of the hash table - a prime number is best
@@ -79,9 +79,11 @@ public class HashingAnswer {
      * @return
      */
         public static int getHashKey(String word) {
-
-            long uniqueIndex=getUniqueNumber(word);
-            return (int) ((uniqueIndex)%size);
+            int total = 0;
+            for(int i=0; i<word.length();i++){
+                total=total+modMult((int)word.charAt(i),modPow(128,i,size),size);
+            }
+            return total%size;
         }
 
 
@@ -95,36 +97,16 @@ public class HashingAnswer {
      * @return
      */
     public static int getDoubleHashKey(String word) {
-        int max = 61;
-        long hashindex =getUniqueNumber(word);
-        int secondHash = (int)(max-(hashindex%max));
-
-        return secondHash;
-    }
-
-
-    /**
-     * Get uniqueNumeber: cats = 3*27^0+1*27^1+20*27^2 + 19*27^3 = 388,587
-     *
-     * @param word
-     * @return
-     */
-    public static long getUniqueNumber(String word) {
-        int p =65;
-        long uniqueIndex = 0l;
-        int sum = 0;
-        int power = 1;
-        for(char c : word.trim().toCharArray()) {
-            while(!isPrime(power)) { //only use prime power and 1;
-                power++;
-            }
-            uniqueIndex += (c) * modPow(p, power, size);
-            power++;
-            sum += c;
+        int total = 0;
+        for(int i=0; i<word.length();i++){
+            total=total+(int)word.charAt(i);
         }
-
-        return (int) (uniqueIndex+sum);
+        int maxjump = 113;
+        return (maxjump - (total % maxjump));
     }
+
+
+
 
 
 
