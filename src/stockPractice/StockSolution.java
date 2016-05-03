@@ -4,24 +4,29 @@ package stockPractice;
 import java.io.*;
 import java.util.Arrays;
 
-/**
+package cs211.project;
 
+import java.io.*;
+import java.util.Arrays;
+
+/**
  *
  */
-public class StockSolution {
+public class Solution {
     static String[] companyIndex;
     static String[] dateIndex;
     public static double array[][];
     public static double price[];
     public static double volatility[][];
-    private static final double TOTAL = 38496*3+2953*10;//1000000.00
+    private static final double TOTAL = 38496*2+1838;//1000000.00
     private static int numcols;
     private static int numrows;
     private static double optimizedOneRoundPrice;
+ 
 
     public static void main(String[] args) {
         FileIO2 io = new FileIO2();
-        String[] original = io.load("src" + File.separator + "stockPractice" + File.separator + "stockdata2.txt");
+        String[] original = io.load("stockdata2.txt");
         numrows = original.length; // how many dates; 881
         numcols = original[0].split("\t").length; //how many companies 466
         array = new double[numrows][numcols];
@@ -32,6 +37,14 @@ public class StockSolution {
             }
         }
 
+        //get price array lowest 319
+        price = new double[numcols];
+        String[] pricestr = io.load("stockprice.txt");
+        for(int i = 0; i < numcols; i++) {
+            price[i] = Double.parseDouble(pricestr[0].split("\t")[i]);
+//            System.out.println(i+" "+price[i]);
+        }
+        
         //get volatility array
         volatility = new double[numcols][2];
         for(int i = 0; i < numcols; i++) {
@@ -41,39 +54,126 @@ public class StockSolution {
         }
         // sort by volatility
         sortVolativity(volatility); //sorted
-        // print2DArray(volatility);
+        printVolatility(volatility);
 
         //get companyname array
         String[] companyNameList = new String[numcols];
-        String[] names = io.load("src" + File.separator + "stockPractice" + File.separator + "companyNames.txt");
+        String[] names = io.load("companyNames.txt");
         for(int i = 0; i < numcols; i++) {
             companyNameList[i] = names[0].split("\t")[i];
 //            System.out.println(i+" "+companyNameList[i]);
         }
 
-        //get price array lowest 319
-        price = new double[numcols];
-        String[] pricestr = io.load("src" + File.separator + "stockPractice" + File.separator + "stockprice.txt");
-        for(int i = 0; i < numcols; i++) {
-            price[i] = Double.parseDouble(pricestr[0].split("\t")[i]);
-//            System.out.println(i+" "+price[i]);
-        }
+
 
 
         //get the optimized stock options
         double[][] option = generateCandicateStockList();//option {index,volatility,price}
-//
-//        double total = TOTAL;
-//        int n= (int)total/(int)optimizedOneRoundPrice;
-//        if (n>0){
-//            setprice();
-//
-//        }
-//        double left = ?;
-//
 
 
-        //set the result
+        
+      //  set the result
+        System.out.println("------------------------------solution1----------------");
+       solution1(option);
+       System.out.println("------------------------------------------");
+
+       
+//       System.out.println("------------------------------solution2----------------");
+//      solution2(option);
+//      System.out.println("------------------------------------------");
+
+
+//        test
+       int result[] = new int[numcols];
+       result[236] = 2;
+       result[140] = 2;
+       result[381] = 2;
+       result[278] = 2;
+       result[184] = 2;
+       result[439] = 2;
+       result[245] = 2;
+       result[87] = 2;
+       result[408] = 1;
+       result[367] = 1;
+        System.out.println(getOverAllVotality(result)); //buy cheapeast in the list more, lower the votality
+//
+      
+        result = new int[numcols];
+        result[236] = 2;
+        result[140] = 2;
+        result[381] = 2;
+        result[278] = 2;
+        result[184] = 2;
+        result[439] = 2;
+        result[245] = 2;
+        result[87] = 2;
+        result[92] = 1;
+        System.out.println(getOverAllVotality(result));
+        //after bought one round ,continue to buy is better than go inside round buy
+    }
+    
+    public static void solution2(double[][] option){
+      int result[] = new int[numcols];
+      double total = TOTAL;
+      int n= (int)total/(int)optimizedOneRoundPrice;
+      if (n>0){
+          for(int i=0;i<option.length;i++){
+        	  result[(int)option[i][0]]=n;
+          }
+          total = total-(optimizedOneRoundPrice*n);
+          //the rest all set to the lowest price  the potion
+          int m = (int) (total/option[0][2]);
+          if (m>0){
+        	  result[(int)option[0][0]]=result[(int)option[0][0]]+m;
+        	  total = total-(option[0][2]*m);
+          }
+
+      }else{//n<0 not enough money to buy one round , then great!
+    	  for(int i=0;i<option.length;i++){
+    		  double price =total -option[i][2];
+    		  if(price>0){
+    			  result[(int)option[i][0]]=1;
+    			  total = price;
+    		  }else{
+    			  break;
+    		  }
+        	  
+          }
+    	  
+      }
+    //pick up any stock left money able to buy in the list
+      while(total >= 319) { //319 is the lowest price of the stock
+          double price1 = 500;
+          for(int i = 0; i < volatility.length; i++) {
+              price1 = total - price[(int) volatility[i][0]];
+              if(price1 < 0) { //find the price can buy
+                //  System.out.println("price:"+price1+" i"+i);
+                  continue;
+
+              } else {
+                  total = price1;
+                  result[(int) volatility[i][0]] = result[(int) volatility[i][0]] + 1;
+               //   System.out.println("bought more:"+total);
+                  break;// go back from beginning to pick the lowest volatility to buy
+              }
+          }
+      }
+
+      System.out.println("total left: " + total);
+      System.out.println("overall votality: " + getOverAllVotality(result));
+      printResult(result);
+      System.out.println("result: " + Arrays.toString(result));
+      validateResult(result);
+
+    }
+    
+
+    /**
+     * firstly buy as much as possible from the option array which sorted by the price. when the total money is < than the lowest price, stop here.
+     * Secondly use the left money buy from the stock which sorted by the votality; (buy the low votality)
+     */
+    public static void solution1(double[][] option){
+    	   //set the result
         int result[] = new int[numcols];
         double total = TOTAL;
         int index = 0;
@@ -107,7 +207,7 @@ public class StockSolution {
         System.out.println("total left: " + total);
         System.out.println("overall votality: "+getOverAllVotality(result));
         printResult(result);
-
+        
         //pick up any stock left money able to buy in the list
         while(total >= 319) { //319 is the lowest price of the stock
             double price1 = 500;
@@ -130,38 +230,21 @@ public class StockSolution {
         System.out.println("overall votality: " + getOverAllVotality(result));
         printResult(result);
         System.out.println("result: " + Arrays.toString(result));
-
-
-
-
-        //test
-//        result = new int[numcols];
-//        result[236] = 3;
-//        result[140] = 3;
-//        result[381] = 3;
-//        result[278] = 3;
-//        result[184] = 3;
-//        result[439] = 7;
-//        result[245] = 3;
-//        result[87] = 3;
-//        System.out.println(getOverAllVotality(result)); //buy cheapeast in the list more, lower the votality
-//
-//        result = new int[numcols];
-//        result[236] = 3;
-//        result[140] = 3;
-//        result[381] = 6;
-//        result[278] = 3;
-//        result[184] = 3;
-//        result[439] = 3;
-//        result[245] = 3;
-//        result[87] = 3;
-//
-//        System.out.println(getOverAllVotality(result));
-        //after bought one round ,continue to buy is better than go inside round buy
+        validateResult(result);
+    	
     }
-
     
-
+    public static void validateResult(int result[]){
+    	double sum =0.0;
+    	  for(int i=0;i<result.length;i++){
+              if(result[i]>0){
+                  sum+=(price[i]*result[i]);
+              }
+              
+          }
+          System.out.println("double check, money should left:"+(TOTAL-sum));
+    	
+    }
 
     public static void printResult(int result[]){
         System.out.println("Result is:");
@@ -339,12 +422,17 @@ public class StockSolution {
 
 
     public static void print2DArray(double[][] a) {
-        for(int i = 0; i < a.length; i++) {//last index no  no data
+        for(int i = 0; i < a.length; i++) {
             System.out.print(Arrays.toString(a[i]) + price[(int) a[i][0]]);
             System.out.println();
         }
     }
 
+    public static void printVolatility(double[][] volatility) {
+        for(int i = 0; i < volatility.length; i++) {
+        	System.out.println("index:"+volatility[i][0]+"  vol:"+volatility[i][1]+" price:"+price[(int)volatility[i][0]]);
+        }
+    }
 
 }
 
@@ -358,10 +446,10 @@ class FileIO2 {
         try {
             input = new BufferedReader(new FileReader(aFile));
             String line = null;
-            int i = 0;
+//            int i = 0;
             while((line = input.readLine()) != null) {
                 contents.append(line);
-                i++;
+//                i++;
                 contents.append(System.getProperty("line.separator"));
             }
         } catch(FileNotFoundException ex) {
