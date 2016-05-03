@@ -45,7 +45,7 @@ public class StockData {
         for(int i=1;i<numrows;i++){
             dateIndex[i] = original[i].split("\t")[0];
         }
-//        highestDrawdown(array);
+        highestDrawdown(array);
     }
 
 
