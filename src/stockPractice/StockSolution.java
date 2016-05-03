@@ -14,9 +14,10 @@ public class StockSolution {
     public static double array[][];
     public static double price[];
     public static double volatility[][];
-    private static final double TOTAL = 38496*3+319*10;//1000000.00
+    private static final double TOTAL = 38496*3+2953*10;//1000000.00
     private static int numcols;
     private static int numrows;
+    private static double optimizedOneRoundPrice;
 
     public static void main(String[] args) {
         FileIO2 io = new FileIO2();
@@ -61,6 +62,15 @@ public class StockSolution {
 
         //get the optimized stock options
         double[][] option = generateCandicateStockList();//option {index,volatility,price}
+//
+//        double total = TOTAL;
+//        int n= (int)total/(int)optimizedOneRoundPrice;
+//        if (n>0){
+//            setprice();
+//
+//        }
+//        double left = ?;
+//
 
 
         //set the result
@@ -125,30 +135,33 @@ public class StockSolution {
 
 
         //test
-        result = new int[numcols];
-        result[236] = 3;
-        result[140] = 3;
-        result[381] = 3;
-        result[278] = 3;
-        result[184] = 3;
-        result[439] = 3;
-        result[245] = 3;
-        result[87] = 3;
-        System.out.println(getOverAllVotality(result));
-
-        result = new int[numcols];
-        result[236] = 3;
-        result[140] = 3;
-        result[381] = 3;
-        result[278] = 3;
-        result[184] = 3;
-        result[439] = 4;
-        result[245] = 3;
-        result[87] = 3;
-
-        System.out.println(getOverAllVotality(result));
+//        result = new int[numcols];
+//        result[236] = 3;
+//        result[140] = 3;
+//        result[381] = 3;
+//        result[278] = 3;
+//        result[184] = 3;
+//        result[439] = 7;
+//        result[245] = 3;
+//        result[87] = 3;
+//        System.out.println(getOverAllVotality(result)); //buy cheapeast in the list more, lower the votality
+//
+//        result = new int[numcols];
+//        result[236] = 3;
+//        result[140] = 3;
+//        result[381] = 6;
+//        result[278] = 3;
+//        result[184] = 3;
+//        result[439] = 3;
+//        result[245] = 3;
+//        result[87] = 3;
+//
+//        System.out.println(getOverAllVotality(result));
         //after bought one round ,continue to buy is better than go inside round buy
     }
+
+    
+
 
     public static void printResult(int result[]){
         System.out.println("Result is:");
@@ -226,6 +239,7 @@ public class StockSolution {
             option[i][2] = price[(int) volatility[i][0]];
             optionTotalPrice += option[i][2];
         }
+        optimizedOneRoundPrice = optionTotalPrice;
         System.out.println("option one round price:" + optionTotalPrice);
 
         //sort option by price
