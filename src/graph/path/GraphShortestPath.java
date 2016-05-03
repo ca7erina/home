@@ -12,7 +12,7 @@ public class GraphShortestPath {
 
     public static void main(String[] args) {
         FileIO io = new FileIO();
-        String[] original = io.load("src" + File.separator + "graph" + File.separator + "path" + File.separator + "test.txt");
+        String[] original = io.load("src" + File.separator + "graph" + File.separator + "path" + File.separator + "Graph.txt");
         int size = original.length - 1;
         int[][] array = new int[size][size];
 
@@ -93,8 +93,8 @@ public class GraphShortestPath {
               furthestdistance=-1;
               furthestroute="";
         }
-//        System.out.println(furthestdistance); //print out the results
-//        System.out.println(furthestroute);
+        //System.out.println(furthestdistance); //print out the results
+      //  System.out.println(furthestroute);
     }
 
     /**

@@ -4,15 +4,12 @@ package stockPractice;
 import java.io.*;
 import java.util.Arrays;
 
-package cs211.project;
 
-import java.io.*;
-import java.util.Arrays;
 
 /**
  *
  */
-public class Solution {
+public class StockSolution {
     static String[] companyIndex;
     static String[] dateIndex;
     public static double array[][];
@@ -26,7 +23,7 @@ public class Solution {
 
     public static void main(String[] args) {
         FileIO2 io = new FileIO2();
-        String[] original = io.load("stockdata2.txt");
+        String[] original = io.load("src" + File.separator + "stockPractice" + File.separator + "stockdata2.txt");
         numrows = original.length; // how many dates; 881
         numcols = original[0].split("\t").length; //how many companies 466
         array = new double[numrows][numcols];
@@ -39,7 +36,7 @@ public class Solution {
 
         //get price array lowest 319
         price = new double[numcols];
-        String[] pricestr = io.load("stockprice.txt");
+        String[] pricestr = io.load("src" + File.separator + "stockPractice" + File.separator + "stockprice.txt");
         for(int i = 0; i < numcols; i++) {
             price[i] = Double.parseDouble(pricestr[0].split("\t")[i]);
 //            System.out.println(i+" "+price[i]);
@@ -54,11 +51,11 @@ public class Solution {
         }
         // sort by volatility
         sortVolativity(volatility); //sorted
-        printVolatility(volatility);
+     //   printVolatility(volatility);
 
         //get companyname array
         String[] companyNameList = new String[numcols];
-        String[] names = io.load("companyNames.txt");
+        String[] names = io.load("src" + File.separator + "stockPractice" + File.separator + "companyNames.txt");
         for(int i = 0; i < numcols; i++) {
             companyNameList[i] = names[0].split("\t")[i];
 //            System.out.println(i+" "+companyNameList[i]);
@@ -84,31 +81,31 @@ public class Solution {
 
 
 //        test
-       int result[] = new int[numcols];
-       result[236] = 2;
-       result[140] = 2;
-       result[381] = 2;
-       result[278] = 2;
-       result[184] = 2;
-       result[439] = 2;
-       result[245] = 2;
-       result[87] = 2;
-       result[408] = 1;
-       result[367] = 1;
-        System.out.println(getOverAllVotality(result)); //buy cheapeast in the list more, lower the votality
+//       int result[] = new int[numcols];
+//       result[236] = 2;
+//       result[140] = 2;
+//       result[381] = 2;
+//       result[278] = 2;
+//       result[184] = 2;
+//       result[439] = 2;
+//       result[245] = 2;
+//       result[87] = 2;
+//       result[408] = 1;
+//       result[367] = 1;
+//        System.out.println(getOverAllVotality(result)); //buy cheapeast in the list more, lower the votality
+////
 //
-      
-        result = new int[numcols];
-        result[236] = 2;
-        result[140] = 2;
-        result[381] = 2;
-        result[278] = 2;
-        result[184] = 2;
-        result[439] = 2;
-        result[245] = 2;
-        result[87] = 2;
-        result[92] = 1;
-        System.out.println(getOverAllVotality(result));
+//        result = new int[numcols];
+//        result[236] = 2;
+//        result[140] = 2;
+//        result[381] = 2;
+//        result[278] = 2;
+//        result[184] = 2;
+//        result[439] = 2;
+//        result[245] = 2;
+//        result[87] = 2;
+//        result[92] = 1;
+//        System.out.println(getOverAllVotality(result));
         //after bought one round ,continue to buy is better than go inside round buy
     }
     
@@ -187,8 +184,7 @@ public class Solution {
                 total += option[index][2];//rollback
                 index = 0;//total <0 set index to the smallest price
                 total -= option[index][2];
-                System.out.println(":" + total);
-                System.out.println(":" + option[index][2]);
+
                 if(total < 0) {// total smaller than the lowest price in the option array.
                     total = total + option[index][2];//rollback
                     System.out.println("total< lowest price, total :" + total + "break here");
