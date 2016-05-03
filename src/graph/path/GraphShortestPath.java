@@ -3,7 +3,7 @@ package graph.path;
 import java.io.*;
 
 /**
- * Calculate the shortest path of any 2 point
+ * Calculate the shortest path of any 2 point ( Dijkstra)
  * let any point be the start point and get the longest path from that table.
  * <p/>
  * Created by chenxiaoxue on 4/26/16.
