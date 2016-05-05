@@ -2,6 +2,7 @@ package stockPractice;
 
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -15,7 +16,7 @@ public class StockSolution {
     public static double array[][];
     public static double price[];
     public static double volatility[][];
-    private static final double TOTAL = 38496*2+1838;//1000000.00
+    private static final double TOTAL = 10000000;//10000000
     private static int numcols;
     private static int numrows;
     private static double optimizedOneRoundPrice;
@@ -27,8 +28,7 @@ public class StockSolution {
         numrows = original.length; // how many dates; 881
         numcols = original[0].split("\t").length; //how many companies 466
         array = new double[numrows][numcols];
-        // get array[][] : all data stored in it;
-        for(int i = 0; i < numrows; i++) {
+        for(int i = 0; i < numrows; i++) { // get array[][] : all data stored in it;
             for(int j = 0; j < numcols; j++) {
                 array[i][j] = Double.parseDouble(original[i].split("\t")[j]);
             }
@@ -69,60 +69,152 @@ public class StockSolution {
 
 
         
-      //  set the result
-        System.out.println("------------------------------solution1----------------");
-       solution1(option);
-       System.out.println("------------------------------------------");
+        // big money 1.057 stable
+//        System.out.println("------------------------------solution1----------------");
+//       solution1(option);
+//       System.out.println("------------------------------------------");
 
-       
+       // better for money less than 70000   70000 0.998
 //       System.out.println("------------------------------solution2----------------");
 //      solution2(option);
 //      System.out.println("------------------------------------------");
 
 
-//        test
-//       int result[] = new int[numcols];
-//       result[236] = 2;
-//       result[140] = 2;
-//       result[381] = 2;
-//       result[278] = 2;
-//       result[184] = 2;
-//       result[439] = 2;
-//       result[245] = 2;
-//       result[87] = 2;
-//       result[408] = 1;
-//       result[367] = 1;
-//        System.out.println(getOverAllVotality(result)); //buy cheapeast in the list more, lower the votality
-////
-//
-//        result = new int[numcols];
-//        result[236] = 2;
-//        result[140] = 2;
-//        result[381] = 2;
-//        result[278] = 2;
-//        result[184] = 2;
-//        result[439] = 2;
-//        result[245] = 2;
-//        result[87] = 2;
-//        result[92] = 1;
-//        System.out.println(getOverAllVotality(result));
-        //after bought one round ,continue to buy is better than go inside round buy
+        // better for money less than 57000 0.990 . 1000000 1.029
+//       System.out.println("------------------------------solution3----------------");
+//        ArrayList<Integer> optimizedoptions = generateCandicateOptions(option);
+//      solution3(optimizedoptions);
+//      System.out.println("------------------------------------------");
+
+
+
+
+
+
+
+
+//        test test test
+        int result[] = new int[numcols];
+  //     for(int i=8;i<volatility.length;i++){
+    //       result= new int[numcols];
+
+               int num=2;
+//               result[236] = num;
+//               result[140] = num;
+//               result[381] = num;
+//               result[278] = num;
+//               result[184] = num;
+//               result[439] = num;
+//               result[245] = num;
+//               result[87] = num;
+                result[4]=num;
+                result[87]=num;
+                result[140]=num;
+                result[278]=num;
+                result[281]=num;
+                result[439]=num;
+                result[211] = num;
+                result[51] =num;
+                result[367] =num;
+                result[69]=num;
+                result[102] =num;
+                result[281]=num;
+                result[447]=num;
+                result[4]=num;
+                result[353]=num;
+              // result[(int)volatility[i][0]] = 1;
+               System.out.println(" "+getOverAllVotality(result));
+
+ //      }
+
+
     }
-    
+
+    /**
+     * Buy the lowest volatility stock first, then keep finding the stock can lower the total volatility, and put them int the list.
+     * @param option
+     * @return the list of stocks that can keep lowing the volatility.
+     */
+    public static ArrayList<Integer> generateCandicateOptions(double[][] option){
+        int result[] = new int[numcols];
+        ArrayList<Integer> optimizedoptions = new ArrayList<Integer>();
+
+        for(int i=0;i<option.length;i++){ //set one round of lowest vol from the table options.
+            result[(int)option[i][0]]=1;
+        }
+        while(true) {
+            double min = getOverAllVotality(result);
+            int min_index = -1;
+            for(int i = 0; i < volatility.length; i++) {//iterate all value, get the lowest vol
+                if(result[(int) volatility[i][0]] > 0) {
+                    continue;
+                }
+                result[(int) volatility[i][0]] = 1;
+                double temp = getOverAllVotality(result);
+                if(temp < min) {
+                    min = temp;
+                    min_index = (int) volatility[i][0];
+                }
+                result[(int) volatility[i][0]] = 0;
+            }
+            if(min_index == -1) { //no value can lower volatility
+              //  System.out.println("didn't find any can lower vol,break, return list");
+                break;
+            } else {
+                optimizedoptions.add(min_index);
+                result[min_index] = 1;
+              //  System.out.println("result add " + min_index + " total vol:" + getOverAllVotality(result));
+
+            }
+        }
+        return optimizedoptions;
+
+    }
+
+    /**
+     * Buy top lowest volatility stocks, and then keep buying the stock from the rest options that can lower the volatility
+     * @param option
+     */
     public static void solution2(double[][] option){
       int result[] = new int[numcols];
       double total = TOTAL;
       int n= (int)total/(int)optimizedOneRoundPrice;
       if (n>0){
-          for(int i=0;i<option.length;i++){
-        	  result[(int)option[i][0]]=n;
+          for(int i=0;i<option.length;i++){ //buy one round
+        	  result[(int)option[i][0]]=1;
           }
-          total = total-(optimizedOneRoundPrice*n);
-          //the rest all set to the lowest price  the potion
-          int m = (int) (total/option[0][2]);
-          if (m>0){
-        	  result[(int)option[0][0]]=result[(int)option[0][0]]+m;
-        	  total = total-(option[0][2]*m);
+          total = total-(optimizedOneRoundPrice*1);
+          System.out.println("bought one round. vol:"+getOverAllVotality(result));
+
+          //the rest buy the one make overallvolatilty lower
+          while(total>0){
+              double min = getOverAllVotality(result);
+              int min_index=-1;
+              for(int i=0;i<volatility.length;i++){//iterate all value, get the lowest vol
+                  if(result[(int)volatility[i][0]]>0){
+                      continue;
+                  }
+                  result[(int)volatility[i][0]]=1;
+                  double temp = getOverAllVotality(result);
+                  if (temp<min){
+                      min=temp;
+                      min_index = (int)volatility[i][0];
+                  }
+                  result[(int)volatility[i][0]]=0;
+              }
+              if(min_index==-1){ //no value can lower volatility
+                  System.out.println("didn't find any can lower vol");
+                  break;
+              }else{
+                  double tempMoney=total -price[min_index];
+                  if(tempMoney>0){
+                      result[min_index]=1;
+                      total=tempMoney;
+                      System.out.println("result add "+min_index+" total vol:"+getOverAllVotality(result));
+                  }else{ // no money to buy
+                      break;
+                  }
+              }
           }
 
       }else{//n<0 not enough money to buy one round , then great!
@@ -138,23 +230,6 @@ public class StockSolution {
           }
     	  
       }
-    //pick up any stock left money able to buy in the list
-      while(total >= 319) { //319 is the lowest price of the stock
-          double price1 = 500;
-          for(int i = 0; i < volatility.length; i++) {
-              price1 = total - price[(int) volatility[i][0]];
-              if(price1 < 0) { //find the price can buy
-                //  System.out.println("price:"+price1+" i"+i);
-                  continue;
-
-              } else {
-                  total = price1;
-                  result[(int) volatility[i][0]] = result[(int) volatility[i][0]] + 1;
-               //   System.out.println("bought more:"+total);
-                  break;// go back from beginning to pick the lowest volatility to buy
-              }
-          }
-      }
 
       System.out.println("total left: " + total);
       System.out.println("overall votality: " + getOverAllVotality(result));
@@ -163,11 +238,83 @@ public class StockSolution {
       validateResult(result);
 
     }
+
+    /**
+     * Buy stocks in the optimized options(lowest volatility portfolios), and then keep buying the stock from the rest options that can lower the volatility
+     * @param optimizedoptions
+     */
+    public static void solution3(ArrayList<Integer> optimizedoptions){
+        int result[] = new int[numcols];
+        double total = TOTAL;
+
+        double sum=0.0;
+        for(int i=0;i<optimizedoptions.size();i++){
+            sum+=price[optimizedoptions.get(i)];
+        }
+
+        int n= (int)total/(int)sum;
+        if (n>0){ //enough money to buy one round of optimizedoptions
+            for(int i=0;i<optimizedoptions.size();i++){
+                result[optimizedoptions.get(i)]=1;
+            }
+            total = total-sum;
+            System.out.println("bought one round. vol:"+getOverAllVotality(result));
+
+
+            while(total>0){//the rest buy the one which lower the overall volatilty
+                double min = getOverAllVotality(result);
+                int min_index=-1;
+                for(int i=0;i<volatility.length;i++){//iterate all value, get the lowest vol
+                    if(result[(int)volatility[i][0]]>0){ //skip the ones already bought
+                        continue;
+                    }
+                    result[(int)volatility[i][0]]=1;
+                    double temp = getOverAllVotality(result);
+                    if (temp<min){
+                        min=temp;
+                        min_index = (int)volatility[i][0];
+                    }
+                    result[(int)volatility[i][0]]=0;
+                }
+                if(min_index==-1){ //no value can lower volatility
+                    System.out.println("didn't find any can lower vol");
+                    break;
+                }else{
+                    double tempMoney=total -price[min_index];
+                    if(tempMoney>0){
+                        result[min_index]=1;
+                        total=tempMoney;
+                        System.out.println("result add "+min_index+" total vol:"+getOverAllVotality(result));
+                    }else{ // no money to buy
+                        break;
+                    }
+                }
+            }
+
+        }else{//n<0 not enough money to buy one round , then great!
+            for(int i=0;i<optimizedoptions.size();i++){
+                double price1 =total -price[optimizedoptions.get(i)];
+                if(price1>0){
+                    result[optimizedoptions.get(i)]=1;
+                    total = price1;
+                }else{
+                    break;
+                }
+            }
+        }
+
+        System.out.println("total left: " + total);
+        System.out.println("overall votality: " + getOverAllVotality(result));
+        printResult(result);
+        System.out.println("result: " + Arrays.toString(result));
+        validateResult(result);
+
+    }
     
 
     /**
      * firstly buy as much as possible from the option array which sorted by the price. when the total money is < than the lowest price, stop here.
-     * Secondly use the left money buy from the stock which sorted by the votality; (buy the low votality)
+     * (only buy the stock inside the top 10 lowest volatility array)
      */
     public static void solution1(double[][] option){
     	   //set the result
@@ -184,7 +331,6 @@ public class StockSolution {
                 total += option[index][2];//rollback
                 index = 0;//total <0 set index to the smallest price
                 total -= option[index][2];
-
                 if(total < 0) {// total smaller than the lowest price in the option array.
                     total = total + option[index][2];//rollback
                     System.out.println("total< lowest price, total :" + total + "break here");
@@ -204,23 +350,23 @@ public class StockSolution {
         System.out.println("overall votality: "+getOverAllVotality(result));
         printResult(result);
         
-        //pick up any stock left money able to buy in the list
-        while(total >= 319) { //319 is the lowest price of the stock
-            double price1 = 500;
-            for(int i = 0; i < volatility.length; i++) {
-                price1 = total - price[(int) volatility[i][0]];
-                if(price1 < 0) { //find the price can buy
-                  //  System.out.println("price:"+price1+" i"+i);
-                    continue;
-
-                } else {
-                    total = price1;
-                    result[(int) volatility[i][0]] = result[(int) volatility[i][0]] + 1;
-                 //   System.out.println("bought more:"+total);
-                    break;// go back from beginning to pick the lowest volatility to buy
-                }
-            }
-        }
+//        //pick up any stock left money able to buy in the list
+//        while(total >= 319) { //319 is the lowest price of the stock
+//            double price1 = 500;
+//            for(int i = 0; i < volatility.length; i++) {
+//                price1 = total - price[(int) volatility[i][0]];
+//                if(price1 < 0) { //find the price can buy
+//                  //  System.out.println("price:"+price1+" i"+i);
+//                    continue;
+//
+//                } else {
+//                    total = price1;
+//                    result[(int) volatility[i][0]] = result[(int) volatility[i][0]] + 1;
+//                 //   System.out.println("bought more:"+total);
+//                    break;// go back from beginning to pick the lowest volatility to buy
+//                }
+//            }
+      //  }
 
         System.out.println("total left: " + total);
         System.out.println("overall votality: " + getOverAllVotality(result));
@@ -247,7 +393,7 @@ public class StockSolution {
         int index=0;
         for(int i:result){
             if(i>0){
-                System.out.println("index:"+index+" , bought:"+i);
+                System.out.println("index:"+index+" , bought:"+i+ " price"+price[index]+ " vola:"+getVotality( array, index));
             }
             index++;
         }
@@ -306,6 +452,9 @@ public class StockSolution {
 
         }
 
+
+
+
 //        System.out.println(total);
 //        System.out.println(getOverAllVotality(result));
         double option[][] = new double[record + 1][3];//option index,volatility,price (record  index is 7, size is 8)
@@ -327,6 +476,32 @@ public class StockSolution {
         return option;
 
     }
+
+
+//    public static double[][] generatePriorityStock(double[] price) {
+//      double priority[] = new double[price.length];
+//        for(int i=0;i<price.length;i++){
+//            priority[i]=price[i];
+//        }
+//
+//        for(int i = priority.length - 1; i > 0; i--) {// bubble sort
+//            for(int j = 0; j < i; j++) {
+//
+//
+//
+//                if(priority[i] > volatility[j + 1][1]) {
+//                    //swap
+//                    double[] temp = volatility[j];
+//                    volatility[j] = volatility[j + 1];
+//                    volatility[j + 1] = temp;
+//                }
+//            }
+//        }
+//
+//    }
+
+
+
 
 
     public static void sortVolativity(double[][] volatility) {
@@ -391,6 +566,7 @@ public class StockSolution {
         double result = Math.sqrt(sum / (array.length - 1 - 1));
         return result;
     }
+
 
 
     /**
