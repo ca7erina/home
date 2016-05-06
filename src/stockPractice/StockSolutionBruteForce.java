@@ -17,7 +17,7 @@ import java.util.Arrays;
  * 
  * 
  */
-public class Solution {
+public class StockSolutionBruteForce {
     static String[] companyIndex;
     static String[] dateIndex;
     public static double array[][];
