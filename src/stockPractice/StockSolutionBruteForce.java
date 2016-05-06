@@ -12,10 +12,8 @@ import java.util.Arrays;
 
 /**
  * Bruce force solution
- * 1.get a stock and put it in the result set, and then keep buying stocks can lower the volatility. and remember the volatility
+ * 1.get a stock and put it in the result set, and then keep buying stocks can lower the volatility. and remember the volatility value of this result set which start with this stock
  * 2.keep repeat step1 and get all the volatilities, and chose the lowest one.
- * 
- * 
  */
 public class StockSolutionBruteForce {
     static String[] companyIndex;
