@@ -17,6 +17,8 @@ public class Queue {
         rear=-1;
         nItems =0;
     }
+
+
     public boolean insert(long j){
         if(isFull()) return false;
         rear++;

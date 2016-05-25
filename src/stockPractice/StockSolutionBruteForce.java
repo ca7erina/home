@@ -72,6 +72,7 @@ public class StockSolutionBruteForce {
     	double min=Double.MAX_VALUE;	
     	for(int i=0;i<numcols;i++){ //index of the stocks
     		int result[]  =getBestResultStartFromThisStock(i);
+            System.out.print("i:"+i);
     		double v = getOverAllVotality(result);
     		if(v<min){
     			System.out.println("lower volatility combination result found:"+v);

@@ -20,8 +20,11 @@ public class Huffman {
         int total = sentence.length() * 7;
         String compressed =allCompressedtext.replace(" ","");
         long result = Math.round(((double) compressed.length() / (double) total) * 100);
-        System.out.println("Compressed size is " + compressed.length()  + "bits / " + total + "bits = " + result + "%");
-
+        System.out.println("Compressed size is " + compressed.length()  + "bits / " + total + "bits = " + result + "%"); //compress ratio
+        System.out.println("Huffman encoding only takes up "+ compressed.length()  + "bits / " + total + "bits = " + result + "% of the space");
+        System.out.println("So we have achieved "+ (100-result)+ "% compression");
+        //So we have achieved 100 – 46.1 = 53.9% compression
+        //Huffman encoding only takes up (71 / 154) = 46.1% of the space
         //decode with frequency array
         System.out.println("decode with frequency table and tree: " + decode(array, allCompressedtext));
     }
@@ -43,7 +46,7 @@ public class Huffman {
     }
 
 
-    //already have tree and codeThe cats did not sit on the mat
+    //already have tree and code The cats did not sit on the mat
     public static String decode(int[] frequencyArray, String allCompressedtext) {
 
         Tree HuffmanTree = buildTree(frequencyArray);
@@ -66,6 +69,7 @@ public class Huffman {
 
 
     public static Tree buildTree(int[] frequencyArray) {
+
         PriorityQueue<Tree> PQ = new PriorityQueue<Tree>();  //make a priority queue to hold the forest of trees
 
         for(int i = 0; i < frequencyArray.length; i++) { //go through frequency array
@@ -75,7 +79,7 @@ public class Huffman {
                 //FILL THIS IN:
 
                 //MAKE THE FOREST OF TREES AND ADD THEM TO THE PQ
-                //create a new Tree
+                //2. Create a new Tree for every letter
                 Tree tree = new Tree();
 
                 //set the cumulative frequency of that Tree
@@ -84,13 +88,14 @@ public class Huffman {
                 Node node = new Node();
                 node.letter = (char) i;
                 tree.root = node;
-                //add the Tree into the PQ
+                //3. Add the Trees into the PriorityQueue
                 PQ.add(tree);
 
             }
         }
-
-
+      //  4. Keep removing the two trees with the lowest frequency from the PriorityQueue
+      //  5. Join them together into a comboTree and stick the comboTree back in the PriorityQueue
+      //  6. Keep doing this until there is just one tree left in the PriorityQueue: the Huffman Tree
         while(PQ.size() > 1) {             //while there are two or more Trees left in the forest
             //IMPLEMENT THE HUFFMAN ALGORITHM
             Tree tree1 = PQ.poll();

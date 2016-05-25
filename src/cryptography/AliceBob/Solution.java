@@ -2,7 +2,7 @@ package cryptography.AliceBob;
 
 
 /**
- * Alice public key(generater, primeNumber,g^x mod p);
+ * Alice public key(primeNumber, generator,g^x mod p);
  * x = private key  [0,p]
  *
  * Bob encryption:(g^y mod p, (m* g^y )mod p)

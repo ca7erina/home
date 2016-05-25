@@ -8,8 +8,8 @@ package algorithm.quickSort;
 import java.util.Arrays;
 
 public class QuickSortMeanOfThree {
-	static int[] theArray = {7,8,2,5,1,9,3,6};
-
+//	static int[] theArray = {7,8,2,5,1,9,3,6};
+	static int[] theArray = {78,96,28,51,40,45,15,85,68,53,19};
 	public static void main(String[] args) {
 		recQuickSort(0,theArray.length-1);
 		System.out.println(Arrays.toString(theArray));
@@ -47,13 +47,13 @@ public class QuickSortMeanOfThree {
 			if(leftPtr >= rightPtr){
 				break;
 			}else{
-//				System.out.println("swap1:"+theArray[leftPtr]+" "+theArray[rightPtr]);
+				System.out.println("swap1:"+theArray[leftPtr]+" "+theArray[rightPtr]);
 				swap(leftPtr, rightPtr);
 				
 			}
 			
 		}
-//		System.out.println("swap2:"+theArray[leftPtr]+" "+theArray[right]);
+		System.out.println("swap pivot:"+theArray[leftPtr]+" "+theArray[right]);
 		swap(leftPtr,right);
 		return leftPtr;
 		
@@ -66,22 +66,23 @@ public class QuickSortMeanOfThree {
 	}
 	
 	public static int medianOf3(int left, int right){
-		int center = (left+right)/2;
-//		System.out.println("median sort index:"+left+" "+center+" "+right);
-//		System.out.println("median sort:"+theArray[left]+" "+theArray[center]+" "+theArray[right]);
-		if(theArray[left]>theArray[center]){
-			swap(left,center);
-		}
-		
-		if(theArray[left]>theArray[right]){
-			swap(left,right);
-		}
-		if(theArray[center]>theArray[right]){
-			swap(center,right);
-		}
-		swap(center, right-1);
-//		System.out.println("after sort median:"+Arrays.toString(theArray));
-		return right-1;
+			int center = (left + right) / 2;
+			System.out.println("median sort index:" + left + " " + center + " " + right);
+			System.out.println("median sort:" + theArray[left] + " " + theArray[center] + " " + theArray[right]);
+			if(theArray[left] > theArray[center]) {
+				swap(left, center);
+			}
+
+			if(theArray[left] > theArray[right]) {
+				swap(left, right);
+			}
+			if(theArray[center] > theArray[right]) {
+				swap(center, right);
+			}
+			swap(center, right - 1);
+			System.out.println("after swap median:" + Arrays.toString(theArray));
+			return right - 1;
+
 	}
 	
 

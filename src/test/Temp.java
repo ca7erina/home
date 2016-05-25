@@ -1,6 +1,10 @@
 package test;
 
+import algorithm.linkedList.LinkedList;
+
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -31,7 +35,10 @@ public class Temp {
 //        System.out.println(1%7);//=0...1
 //        System.out.println(7%1);//=7..0
 
-
+     A a = new B();
+       a.call();
+        B b = new B();
+       b.call();
 
     }
 
