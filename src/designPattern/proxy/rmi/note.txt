@@ -1,0 +1,14 @@
+1.create MyRemote
+2. create MyRemoteImpl
+3.
+/home/out/production/home
+rmic designPattern.proxy.rmi.MyRemoteImpl
+
+4.start under/home/out/production/home
+rmiregistry
+
+must start rmiregistry before start remote service.
+
+5.java MyRemoteImpl
+
+6. create and java MyRemoteClient
