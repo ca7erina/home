@@ -11,8 +11,10 @@ public class DateClient
             // bin is the input stream from the server
             BufferedReader bin = new BufferedReader(new InputStreamReader(in));
             String line;
-            while ( (line = bin.readLine()) != null)
+            while ( (line = bin.readLine()) != null){
                 System.out.println(line);
+            }
+
             sock.close();
         }
         catch (IOException ioe) {

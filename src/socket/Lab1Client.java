@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 /**
  * socket HTTP request
  */
-public class Client {
+public class Lab1Client {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         String urlStr = "http://www.scss.tcd.ie/~ebarrett/lectures/cs4032/echo.php";
