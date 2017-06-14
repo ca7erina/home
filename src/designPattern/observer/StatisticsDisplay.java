@@ -16,7 +16,7 @@ public class StatisticsDisplay implements Observer,DisplayElement {
         weatherData.registerObserver(this);
     }
 
-    @Override
+
     public void update(float temperature, float humidity, float pressure) {
         this.temperature = temperature;
         this.humidity = humidity;
@@ -24,7 +24,7 @@ public class StatisticsDisplay implements Observer,DisplayElement {
         display();
     }
 
-    @Override
+
     public void display() {
         System.out.println("Staticstics: "+ temperature +" F degrees and "+ humidity +" % humidity "+ pressure+ "pa pressure");
 

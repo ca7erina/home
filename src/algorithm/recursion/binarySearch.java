@@ -3,7 +3,7 @@ package algorithm.recursion;
 /**
  * Created by chenxiaoxue on 12/2/15.
  */
-public class BinarySearch {
+public class binarySearch {
     static int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 
     public static void main(String[] args) {

@@ -3,7 +3,7 @@ package algorithm;
 /**
  * Created by chenxiaoxue on 1/6/16.
  */
-public class Modulo {
+public class modulo {
 
     public static void main(String args[] ) throws Exception {
         System.out.println(2%3); //=0...2
